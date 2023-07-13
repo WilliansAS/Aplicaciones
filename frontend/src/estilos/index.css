@@ -1,0 +1,101 @@
+@font-face {
+  font-family: 'Fenix';
+  src: url('../tipografia/Fenix-Regular.ttf') format('opentype');
+}
+
+*{
+  font-family: 'Fenix';
+}
+  body{
+  background: url(https://st.depositphotos.com/1098742/1742/v/600/depositphotos_17424087-stock-illustration-abstract-vector-background.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  }
+  
+
+  .banner-section {
+      background: url("https://images.pexels.com/photos/5085334/pexels-photo-5085334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") 50% no-repeat;
+      background-size: cover;
+      height: 75vh;
+      text-align: center;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    }
+    
+    .banner-section .banner-section-text {
+      color: #000000;
+      text-shadow: 1px 1px 2px #0a0a0a;
+    }
+    
+  body p{
+    margin: 10px 15px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  
+   body h1{
+    text-align: center;
+    line-height: 28px;
+    margin: 30px 0;
+   }
+  
+   body h3{
+    text-align: center;
+   }
+  
+    
+    /*Las categorias*/
+    .categorias {
+      text-align: center;
+      margin: 0 15px;
+      padding: 30px 50px;
+      display: grid;
+      grid-gap: 8px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .categorias img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    .block {
+      width: 100%;
+      height: 100%;
+      border: 3px solid rgb(241, 122, 193);
+      opacity: 0.8;
+      transition: opacity 0.2s ease-out;  
+    }
+    
+    
+    .block:hover {
+      transition: opacity 0.2s ease-in;
+      opacity: 1;
+    }
+  
+    #b1{
+      grid-column-start: span 2;
+    }
+  
+    #b2{
+      grid-row-end: span 2;
+      grid-column-start: span 1;
+    }
+  
+    #b5{
+      grid-column-start: span 3;
+    }
+  
+    .block #b5{
+      height: 20%;
+    }

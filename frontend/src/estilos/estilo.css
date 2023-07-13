@@ -1,0 +1,523 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:700);
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap");
+
+* {
+  margin: auto;
+}
+
+body{
+    background-color: #D9D9D9;
+    font-family: 'Poppins', sans-serif;
+}
+
+/*.specific_body {
+  background-color: #D9D9D9;
+  font-family: 'Poppins', sans-serif;
+}*/
+
+.photo_and_name_of_company {
+  padding-right: 25%;
+  text-align: left;
+}
+
+.photo {
+  text-align: left;
+  width: 30px;
+  height: 24px;
+}
+
+nav {
+  background-color: #ffffff;
+  height: 60px;
+  text-align: right;
+}
+
+nav a {
+  width: fit-content;
+  color: black;
+  font-size: 22px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+nav ul {
+  padding-top: 10px;
+
+}
+
+nav ul li {
+  padding-top: 10px;
+  display: inline;
+  /*PADDING: TOP, RIGHT BOTTOM LEFT*/
+  padding: 5px 10PX 5PX 10px;
+}
+
+nav a:hover {
+  color: aqua;
+  text-decoration: underline;
+}
+
+#first_img {
+  padding: 0 6%;
+  /*max-width: 80%;*/
+  max-height: 400px;
+}
+
+.acomodo {
+  padding-top: 30px;
+  width: 88%;
+  clear: both;
+  padding-bottom: 30px;
+}
+
+#foto {
+  max-height: 280px;
+  float: right;
+  width: 30%;
+  margin-left: 20px;
+  padding: 10px;
+  border: 1px rgb(3, 148, 193) solid;
+  border-radius: 5%;
+  transition: 0.8s;
+
+}
+
+#foto:hover {
+  opacity: 80%;
+  transform: scale(1.2);
+  background-color: rgb(208, 165, 248);
+}
+
+section {
+  width: 88%;
+}
+
+#Texto {
+  font-size: 20px;
+  line-height: 30px;
+  clear: both;
+  padding-bottom: 20px;
+}
+
+#Texto p{
+  text-align: justify;
+}
+
+#Texto2 h1 {
+  padding-top: 15px;
+  text-align: center;
+  font-size: 40px;
+}
+
+#Texto h2{
+  padding-top: 5%;
+  text-align: center;
+}
+
+#Texto2 {
+  background: #F5DCDC;
+  font-size: 20px;
+  border: 2px solid black;
+  text-align: justify;
+  padding: 0 10px;
+  clear: both;
+}
+
+#Proveedores {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  clear: both;
+}
+
+.proveedor {
+  padding: 20px;
+  text-align: justify;
+}
+
+.proveedor img{
+  border-radius: 5%;
+  width: 100%;
+
+  /*Se le agrega radius and transition*/
+
+  border-radius: 5%;
+  transition: 0.8s;
+}
+
+/*Se le agrega over a la foto de las carreras*/
+
+.proveedor img:hover{
+  opacity: 80%;
+  transform: scale(1.2);
+}
+
+.proveedor h4{
+  font-size: 25px;
+  padding: 20px 0;
+}
+.proveedor a{
+  background: rgb(3, 148, 193) ;
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.proveedor a:hover{
+  color: rgb(3, 148, 193) ;
+  background-color: #ffffff;
+}
+
+section h1 {
+  font-size: 40px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.Exclamar {
+  font-size: 50px;
+  padding-bottom: 20px;
+  text-decoration: aliceblue;
+  text-align: center;
+}
+
+.Exclamar2 {
+  padding-left: 16%;
+  height: 20px;
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  -webkit-text-stroke: 2px rgb(255, 73, 73);
+  color: #ffffff;
+  clear: both;
+}
+
+.col-sm-4 {
+  text-align: center;
+  font-size: 20px;
+  width: 23.33%;
+}
+
+.separacion {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  clear: both;
+}
+
+.container {
+  clear: both;
+  width: fit-content;
+}
+
+.boton {
+  text-align: center;
+}
+
+.boton a {
+  width: 40%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 30px;
+  background: rgb(3, 148, 193);
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 5%;
+  display: inline-block;
+}
+
+.boton a:hover {
+  color: rgb(3, 148, 193);
+  background-color: #ffffff;
+}
+
+/*
+Esta parte es el css para el metodo de pago
+*/
+
+.main-container {
+  width: 375px;
+  margin: auto;
+}
+
+.main-container__background-section {
+  /*background-image: url("IMG/tarjeta_credito.jpg");*/
+  background-repeat: no-repeat;
+  height: 240px;
+  position: relative;
+}
+
+.main-container__form-section {
+  padding: 90px 24px 45px;
+}
+
+@media (min-width: 1440px) {
+  .main-container {
+    width: 1440px;
+    display: flex;
+  }
+
+  .main-container__background-section {
+    /*background-image: url("IMG/tarjeta_credito.jpg");*/
+    width: 900px;
+    height: 900px;
+  }
+}
+
+.cars {
+  width: 288px;
+  height: 160px;
+  padding: 20px;
+  /*background-image: url("IMG/tarjeta_credito.jpg");*/
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 126px;
+  left: 18px;
+  z-index: 1;
+  letter-spacing: 2px;
+}
+
+@media (min-width: 1440px) {
+  .card {
+    width: 450px;
+    height: 247px;
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card {
+    top: 187px;
+    left: 167px;
+  }
+}
+
+.card__logo {
+  width: 30px;
+}
+
+.card__number {
+  margin-bottom: 15px;
+}
+
+.card__details {
+  display: flex;
+  font-size: 0.6em;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+
+@media (min-width: 1440px) {
+  .card__logo {
+    width: 86px;
+    margin-bottom: 55px;
+  }
+
+  .card__number {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+  }
+
+  .card__details {
+    font-size: 0.8em;
+  }
+}
+
+.card-back {
+  width: 288px;
+  height: 160px;
+  color: hsl(0deg, 0%, 100%);
+  padding: 20px;
+ /* background-image: url("../images/bg-card-back.png");*/
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 30px;
+  left: 75px;
+  letter-spacing: 2px;
+}
+
+@media (min-width: 1440px) {
+  .card-back {
+    width: 450px;
+    height: 247px;
+    padding: 30px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .card-back {
+    top: 468px;
+    left: 257px;
+  }
+}
+
+.card-back__cvc {
+  font-size: 0.7em;
+  margin-top: 50px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+@media (min-width: 1440px) {
+  .card-back__cvc {
+    font-size: 1em;
+    margin-top: 80px;
+    padding-right: 30px;
+  }
+}
+
+.form__label {
+  text-transform: uppercase;
+  font-size: 0.65em;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 8px;
+  color: hsl(278deg, 68%, 11%);
+  font-weight: bold;
+}
+
+.form__input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 18px;
+  border-radius: 4px;
+  font-family: "Space Grotesk", sans-serif;
+  border: 1px solid hsl(270deg, 3%, 87%);
+  padding-left: 10px;
+  font-size: 1em;
+  outline: none;
+}
+
+.form__input::placeholder {
+  color: hsl(270deg, 3%, 87%);
+}
+
+.form__date-cvc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.form__date {
+  display: flex;
+  gap: 10px;
+}
+
+.form__submit,
+.thanks-section__button {
+  background-color: hsl(278deg, 68%, 11%);
+  color: hsl(270deg, 3%, 87%);
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  font-size: 1em;
+  letter-spacing: 1px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.form__submit:hover,
+.thanks-section__button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 1440px) {
+  .form {
+    margin-top: 180px;
+    width: 385px;
+  }
+
+  .form__input {
+    margin-bottom: 40px;
+  }
+}
+
+.error {
+  color: hsl(0deg, 100%, 66%);
+  margin: -10px 0 18px;
+  font-size: 0.6em;
+}
+
+.form__errors-container {
+  display: flex;
+  gap: 5px;
+}
+
+.form__errors-container div {
+  width: 100px;
+  text-align: center;
+}
+
+.thanks-section {
+  display: none;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 60px;
+}
+
+.thanks-section__img {
+  display: block;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.thanks-section__title {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 4px;
+  color: hsl(278deg, 68%, 11%);
+  margin-bottom: 24px;
+}
+
+.thanks-section__text {
+  text-align: center;
+  color: hsl(279deg, 6%, 55%);
+  font-size: 1.1em;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 1440px) {
+  .thanks-section {
+    margin-top: 180px;
+  }
+}
+
+.attribution {
+  font-size: 14px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228deg, 45%, 44%);
+}
+
+footer{
+  margin-top: 20px;
+  background: #FFDB1E;
+  padding: 25px 15px;
+  position: relative;
+  text-align: right;
+  
+}
+
+footer img{
+  margin: 0 8px;
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+}
+
+footer h5{
+  font-weight: bold;
+  clear: both;
+  float: left;
+}
+
+
+
+

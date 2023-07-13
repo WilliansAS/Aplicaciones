@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Fenix';
+    src: url('../tipografia/Fenix-Regular.ttf') format('opentype');
+}
+
+*{
+    font-family: 'Fenix';
+}
+/*contactos*/
+.contacts{
+    display: flex; 
+    align-items: center;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 7px;
+      border: 2px rgb(255, 115, 225) outset;
+      background-color: #fcf75e;
+  }
+  
+  #div{
+      margin: 10px 25px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+  }
+  
+  
+  .contacts img{
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+  }
+      
+  
+  
+  #texto{
+      font-weight: bolder;
+      text-align: center;
+      margin: 0 8px;
+      clear: both;
+      float: right;
+  }
