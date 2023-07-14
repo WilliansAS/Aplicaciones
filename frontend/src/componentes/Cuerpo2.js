@@ -9,8 +9,8 @@ function Cuerpo2(){
         <div className="acomodo">
   <section id="Texto">
     <h1 className="Exclamar">!Conócenos!</h1>
-    <Link to="#">
-      <img src={require('../imagenes/boda.jpeg')} alt="Carrito_Compras" id="foto" />
+    <Link to="/">
+      <img src={require('../imagenes/boda.jpeg')} alt="Carrito_Compras" id="fotonos" />
     </Link>
     <p>
       Somos una compañía con 15 años de experiencia en el mercado, basada en

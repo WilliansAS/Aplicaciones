@@ -6,21 +6,29 @@
   margin: auto;
 }
 
-body{
-    background-color: #D9D9D9;
-    font-family: 'Poppins', sans-serif;
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  /* Agrega aquí tus estilos para dispositivos móviles */
 }
 
-/*.specific_body {
-  background-color: #D9D9D9;
-  font-family: 'Poppins', sans-serif;
-}*/
+/* Estilos para tabletas */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Agrega aquí tus estilos para tabletas */
+}
 
+/* Estilos para pantallas de escritorio */
+@media (min-width: 992px) {
+  /* Agrega aquí tus estilos para pantallas de escritorio */
+}
 .photo_and_name_of_company {
   padding-right: 25%;
   text-align: left;
 }
 
+.photo {
+  width: 5%;
+  height: auto;
+}
 .photo {
   text-align: left;
   width: 30px;
@@ -72,15 +80,25 @@ nav a:hover {
 }
 
 #foto {
-  max-height: 280px;
+  height: 220px;
   float: right;
-  width: 30%;
-  margin-left: 20px;
+  width: 220px;
   padding: 10px;
   border: 1px rgb(3, 148, 193) solid;
   border-radius: 5%;
   transition: 0.8s;
+  margin-left: 80px;
+}
 
+#fotonos{
+  height: 220px;
+  float: right;
+  width: 220px;
+  padding: 10px;
+  border: 1px rgb(3, 148, 193) solid;
+  border-radius: 5%;
+  transition: 0.8s;
+  margin: 15px 40px;
 }
 
 #foto:hover {
@@ -496,27 +514,47 @@ Esta parte es el css para el metodo de pago
   color: hsl(228deg, 45%, 44%);
 }
 
-footer{
-  margin-top: 20px;
-  background: #FFDB1E;
-  padding: 25px 15px;
-  position: relative;
-  text-align: right;
+/* Estilos para dispositivos móviles */
+@media (max-width: 767px) {
+  /* Agrega aquí tus estilos para dispositivos móviles */
+}
+
+/* Estilos para tabletas */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Agrega aquí tus estilos para tabletas */
+}
+
+/* Estilos para pantallas de escritorio */
+@media (min-width: 992px) {
+  /* Agrega aquí tus estilos para pantallas de escritorio */
+}
+.footer{
+    margin-top: 20px;
+    background: #fcf75e;
+    padding: 25px 15px;
+    position: relative;
+    text-align: right;
+    height: 95px;
+  }
+
+  .footer img {
+    margin: 0 2%;
+    width: 10%;
+    height: auto;
+  }
   
-}
-
-footer img{
-  margin: 0 8px;
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-}
-
-footer h5{
-  font-weight: bold;
-  clear: both;
-  float: left;
-}
+.footer img{
+    margin: 0 8px;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+  }
+  
+  .footer h5{
+    font-weight: bold;
+    clear: both;
+    float: left;
+  }
 
 
 

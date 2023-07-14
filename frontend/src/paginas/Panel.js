@@ -6,6 +6,7 @@ import Tabla2 from "../componentes/Tablausu";
 import Tabla1 from "../componentes/Tablaprod";
 import Tabla3 from "../componentes/Tablacat";
 
+
 function Panel(){
     return(
         <>
@@ -27,17 +28,19 @@ function Panel(){
   </div>
   <div className="holy-grail-middle">
     <h3>Dashboard</h3>
+
     <div className="botones">
     <Link to="/form1"><button type="button" class="btn btn-primary" id="categoria">Agregar categorias</button></Link>
     <button type="button" class="btn btn-primary">Agregar productos</button>
     <Link to="/registrar"><button type="button" class="btn btn-primary">Agregar usuarios</button></Link>
+    </div>
 
-    <section>
+    <div>
   <Tabla2 />
   <Tabla1 />
   <Tabla3 />
-    </section>
     </div>
+    
   </div>
  
 
