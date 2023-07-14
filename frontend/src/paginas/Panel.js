@@ -9,7 +9,7 @@ function Panel(){
         <Encabezado />
   <div className="holy-grail-grid">
   <div className="holy-grail-left">
-    <h3>Nav</h3>
+    <h3>Registros</h3>
     <ul>
       <li>
         <Link to="">Categorias</Link>

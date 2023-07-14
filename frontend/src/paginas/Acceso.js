@@ -6,7 +6,7 @@ import '../estilos/acceso.css';
 
 function Acceso() {
     const [campos, setCampos] = useState({
-        correo_electronico: "",
+        correo: "",
         contrasenia: ""
     });
 
@@ -15,11 +15,12 @@ function Acceso() {
 
     const acceder = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8082/acceso', campos)
+        axios
+        .post('http://localhost:8082/acceso', campos)
             .then(respuesta => {
                 if (respuesta.data.Estatus === "CORRECTO") {
                     localStorage.setItem('usuario', respuesta.data);
-                    navegacion('/')
+                    navegacion('/panel')
                 } else {
                     setError(respuesta.data.Error);
                 }
@@ -41,8 +42,8 @@ function Acceso() {
                         </div>
                         <form onSubmit={acceder}>
                             <div className="mb-3">
-                                <input type="email" placeholder="Correo Electrónico" name="correo_electronico"
-                                    onChange={e => setCampos({ ...campos, correo_electronico: e.target.value })} className="form-control rounded-21 input-field" autoComplete="">
+                                <input type="email" placeholder="Correo Electrónico" name="correo"
+                                    onChange={e => setCampos({ ...campos, correo: e.target.value })} className="form-control rounded-21 input-field" autoComplete="">
                                 </input>
                             </div>
                             <div className="mb-3">

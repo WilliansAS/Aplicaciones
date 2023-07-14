@@ -1,11 +1,12 @@
 import express from 'express';
 import mysql from 'mysql';
 import cors from 'cors';
+import Jwt  from 'jsonwebtoken';
 
 //CREAR LAS INSTANCIA DE EXPRESS
 const app=express();
 app.use(cors());
-app.use(express());
+app.use(express.json());
 
 
 //CREAR LA CONEXION
@@ -76,13 +77,13 @@ app.post('/acceso', (peticion,respuesta)=>{
         }else{
             return respuesta.json({Estatus:"ERROR", Error:"Usuario o contraseña incorrecta"});
         }
-    })
+    });
 });
 
 //Registro
 
 app.post('/registrar', (peticion,respuesta)=>{
-    const sql="INSERT INTO usuario(nombre_usuario,numero_telefono,direccion,correo,contrasenia) VALUES(?,?,?,?,sha1(?))";
+    const sql="INSERT INTO usuario(nombre_usuario,numero_telefono,direccion,correo,contrasenia) VALUES(?,?,?,?,?)";
     conexion.query(sql,[peticion.body.nombre_usuario,peticion.body.numero_telefono,peticion.body.direccion,peticion.body.correo,peticion.body.contrasenia],
     (error,resultado)=>{
         if(error) return respuesta.json({mensaje:"Error en la consulta"});
@@ -97,7 +98,7 @@ app.post('/registrarcat', (peticion,respuesta)=>{
     const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria) VALUES(?,?)";
     conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria],
     (error,resultado)=>{
-        if(error) return respuesta.json({mensaje:"error en la consulta"});
+        if(error) return respuesta.json({mensaje:"Error en la consulta"});
         if(resultado){
             return respuesta.json({Estatus:"CORRECTO"});
         }
