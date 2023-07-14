@@ -2,6 +2,9 @@ import React from "react";
 import '../estilos/panel.css';
 import Encabezado from "../componentes/Encabezado";
 import { Link } from "react-router-dom";
+import Tabla2 from "../componentes/Tablausu";
+import Tabla1 from "../componentes/Tablaprod";
+import Tabla3 from "../componentes/Tablacat";
 
 function Panel(){
     return(
@@ -30,7 +33,9 @@ function Panel(){
     <Link to="/registrar"><button type="button" class="btn btn-primary">Agregar usuarios</button></Link>
 
     <section>
-  
+  <Tabla2 />
+  <Tabla1 />
+  <Tabla3 />
     </section>
     </div>
   </div>

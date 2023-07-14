@@ -105,7 +105,17 @@ app.post('/registrarcat', (peticion,respuesta)=>{
     })
 });
 
-
+//Obtener usuarios registrados
+app.get('/obtenerUsuarios',(peticion, respuesta)=>{
+    // 6.1 consulta sql
+    const sql="SELECT * FROM usuario";
+    // 6.2 lo envio a la conexion
+    conexion.query(sql,(error,resultado)=>{
+        // 6.3 compruebo el resultado
+        if(error) return respuesta.json({Error:"Error en la consulta"});
+        return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
+    });
+});
 
 //INICIAR SERVIDOR
 app.listen(8082,() =>{
