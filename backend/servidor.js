@@ -5,6 +5,8 @@ import cors from 'cors';
 //CREAR LAS INSTANCIA DE EXPRESS
 const app=express();
 app.use(cors());
+app.use(express());
+
 
 //CREAR LA CONEXION
 const conexion=mysql.createConnection({
@@ -58,6 +60,48 @@ app.get('/obtenerProductos/:id',(peticion, respuesta)=>{
         if(error) return respuesta.json({Error:"Error en la consulta"});
         return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
     });
+});
+
+//Acceso
+
+app.post('/acceso', (peticion,respuesta)=>{
+    const sql="SELECT * FROM usuario where correo=? and contrasenia=?";
+    conexion.query(sql,[peticion.body.correo,peticion.body.contrasenia],
+    (error,resultado)=>{
+        if(error) return respuesta.json({mensaje:"error en la consulta"});
+        if(resultado.length>0){
+            const token=Jwt.sign({usuario:'administrador'},'12345678', {expiresIn:'1d'});
+            respuesta.cookie(token);
+            return respuesta.json({Estatus:"CORRECTO",Usuario:token})  
+        }else{
+            return respuesta.json({Estatus:"ERROR", Error:"Usuario o contraseña incorrecta"});
+        }
+    })
+});
+
+//Registro
+
+app.post('/registrar', (peticion,respuesta)=>{
+    const sql="INSERT INTO usuario(nombre_usuario,numero_telefono,direccion,correo,contrasenia) VALUES(?,?,?,?,sha1(?))";
+    conexion.query(sql,[peticion.body.nombre_usuario,peticion.body.numero_telefono,peticion.body.direccion,peticion.body.correo,peticion.body.contrasenia],
+    (error,resultado)=>{
+        if(error) return respuesta.json({mensaje:"Error en la consulta"});
+        if(resultado){
+            return respuesta.json({Estatus:"CORRECTO"});
+        }
+    })
+});
+
+//Registrar categorias
+app.post('/registrarcat', (peticion,respuesta)=>{
+    const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria) VALUES(?,?)";
+    conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria],
+    (error,resultado)=>{
+        if(error) return respuesta.json({mensaje:"error en la consulta"});
+        if(resultado){
+            return respuesta.json({Estatus:"CORRECTO"});
+        }
+    })
 });
 
 

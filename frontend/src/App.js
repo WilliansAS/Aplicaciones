@@ -11,6 +11,10 @@ import Contactos from './paginas/Contactos';
 import Confirmacion from './paginas/Confirmacion';
 import Salones from './paginas/Salones';
 import Registro from './paginas/Registro';
+import Acceso from './paginas/Acceso';
+import Panel from './paginas/Panel';
+import Formulario1 from './paginas/FormCat';
+
 
 function App() {
   return (
@@ -24,7 +28,10 @@ function App() {
       <Route path='/Contactos' element={<Contactos/>}></Route>
       <Route path='/Confirmacion' element={<Confirmacion/>}></Route>
       <Route path='/Salones/:id' element={<Salones/>}></Route>
-      <Route path='/Registro' element={<Registro/>}></Route>
+      <Route path='/registrar' element={<Registro/>}></Route>
+      <Route path='/acceso' element={<Acceso/>}></Route>
+      <Route path='/panel' element={<Panel/>}></Route>
+      <Route path='/form1' element={<Formulario1/>}></Route>
       </Routes>
     </BrowserRouter>
   );

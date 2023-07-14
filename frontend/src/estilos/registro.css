@@ -1,24 +1,42 @@
+form {
+  max-width: 400px;
+  margin: 10% auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
 
-form .form-icons {
-    text-align: center;
-  }
-  
-  form .form-icons h4 {
-    margin-bottom: 1rem;
-  }
-  
-  form .form-icons .input-group-label {
-    background-color: #1779ba;
-    border-color: #1779ba;
-  }
-  
-  form .form-icons .input-group-field {
-    border-color: #1779ba;
-  }
-  
-  form .form-icons .fa {
-    color: white;
-    width: 1rem;
-  }
-  
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form .mb-3 {
+  margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
   

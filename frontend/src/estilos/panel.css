@@ -2,12 +2,21 @@
 .holy-grail-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: 1fr 3fr 1fr;
-        grid-template-columns: 1fr 3fr 1fr;
-    -ms-grid-rows: 1fr 8fr 1fr;
-        grid-template-rows: 1fr 8fr 1fr;
-    grid-gap: 20px;
+    -ms-grid-columns: 1fr 3fr ;
+        grid-template-columns: 1fr 3fr ;
+    -ms-grid-rows: 1fr 8fr ;
+        grid-template-rows: 1fr 8fr ;
+    grid-gap: 5px;
     height: 100vh;
+    margin-top: 15px;
+  }
+
+  .botones{
+      text-align: center;      
+  }
+
+  .btn-primary{
+    margin: 0 12px;
   }
   
   @media screen and (max-width: 60em) {
@@ -17,14 +26,14 @@
     }
   }
   
-  .holy-grail-header,
   .holy-grail-left,
-  .holy-grail-middle,
-  .holy-grail-right,
-  .holy-grail-footer {
+  .holy-grail-middle
+   {
     padding: 1rem;
     border: 1px solid #ededed;
-    background-color: #ededed;
+    background-color: #ffffff;
+    width: 98%;
+    height: 100%;
   }
   
   .holy-grail-header {
@@ -65,10 +74,6 @@
     }
   }
   
-  .holy-grail-footer {
-    -ms-grid-column: 1;
-        grid-column-start: 1;
-    grid-column-end: 4;
-  }
+  
   
   
