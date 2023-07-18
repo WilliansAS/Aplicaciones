@@ -8,7 +8,7 @@ function Cuerpo2(){
         <Encabezado></Encabezado>
         <div className="acomodo">
   <section id="Texto">
-    <h1 className="Exclamar">!Conócenos!</h1>
+    <h1 className="Exclamar">¡Conócenos!</h1>
     <Link to="/">
       <img src={require('../imagenes/boda.jpeg')} alt="Carrito_Compras" id="fotonos" />
     </Link>
@@ -26,7 +26,7 @@ function Cuerpo2(){
     </p>
   </section>
   <section id="Texto2">
-    <h1 className="Exclamar">!Nuestros Valores!</h1>
+    <h1 className="Exclamar">¡Nuestros Valores!</h1>
     <p>
       Para nosotros el cliente, es lo más importante, por lo tanto su
       satisfacción, es nuestra prioridad, somos fieles creyentes del "El cliente
@@ -45,7 +45,7 @@ function Cuerpo2(){
     </p>
   </section>
   <section id="Texto">
-    <h1 className="Exclamar">!Nuestra Ubicación!</h1>
+    <h1 className="Exclamar">¡Nuestra Ubicación!</h1>
     <Link to="https://www.oceanviewcancunarenas.com/">
       <img src={require('../imagenes/cancun.jpg')}alt="Playa_Cancun" id="foto" />
     </Link>

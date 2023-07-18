@@ -105,6 +105,18 @@ app.post('/registrarcat', (peticion,respuesta)=>{
     })
 });
 
+//Registrar mensajes de contacto
+app.post('/registrarMensaje', (peticion,respuesta)=>{
+    const sql="INSERT INTO contacto (nombre,correous,mensaje) VALUES(?,?,?)";
+    conexion.query(sql,[peticion.body.nombre,peticion.body.correous,peticion.body.mensaje],
+    (error,resultado)=>{
+        if(error) return respuesta.json({mensaje:"Error en la consulta"});
+        if(resultado){
+            return respuesta.json({Estatus:"CORRECTO"});
+        }
+    })
+});
+
 //Obtener usuarios registrados
 app.get('/obtenerUsuarios',(peticion, respuesta)=>{
     // 6.1 consulta sql

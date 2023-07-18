@@ -8,7 +8,7 @@ function ContenedorP(){
   const[productos, setProductos] = useState([]);
   //Obtener todos los productos
   useEffect(()=> {
-    axios.get('http://localhost:8082/obtenerProductos/')
+    axios.get('http://localhost:8082/obtenerProductos')
     .then(respuesta => {
         if(respuesta.data.Estatus==='Exitoso'){
             setProductos(respuesta.data.Resultado);

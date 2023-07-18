@@ -1,8 +1,3 @@
-.form {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    padding: 20px;
-}
 
 .btn {
     background-color: #007bff;
@@ -17,15 +12,13 @@
     background-color: #0056b3;
 }
 
-.text-danger {
-    color: red;
-}
 
 .container-background {
     margin-top: 3%;
     padding-top: 10px;
     background-color: #ffffff;
     margin-bottom: 3%;
+    border-radius: 12px;
 }
 
 .input-field {

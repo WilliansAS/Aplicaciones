@@ -1,0 +1,96 @@
+header {
+    background-color: #ffffff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    margin-right: 10px;
+  }
+  
+  .photo {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .logo-text {
+    font-weight: bold;
+  }
+  
+  .navbar {
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+  }
+  
+  .navbar-link {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .navbar-link:hover {
+    color: aqua;
+  }
+  
+  .navbar li {
+    margin-left: 10px;
+  }
+  
+  .navbar li a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+  }
+  
+  .navbar li a:hover {
+    color: aqua;
+  }
+  
+  /* Media query para dispositivos con un ancho máximo de 768px (celulares) */
+  @media (max-width: 768px) {
+    .logo {
+      margin-right: 0;
+    }
+  
+    .navbar {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+  
+    .navbar li {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .navbar li:last-child {
+      margin-bottom: 0;
+    }
+  
+    .navbar li a {
+      display: block;
+      padding: 5px;
+    }
+  
+    .menu-toggle {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: url('../imagenes/icon_eyelash.png') center center no-repeat;
+      background-size: cover;
+      cursor: pointer;
+    }
+  
+    .menu-open .navbar {
+      display: flex;
+      flex-direction: column;
+    }
+  }

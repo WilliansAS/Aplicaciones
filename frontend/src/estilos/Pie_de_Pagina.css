@@ -1,17 +1,4 @@
-/* Estilos para dispositivos móviles */
-@media (max-width: 767px) {
-  /* Agrega aquí tus estilos para dispositivos móviles */
-}
 
-/* Estilos para tabletas */
-@media (min-width: 768px) and (max-width: 991px) {
-  /* Agrega aquí tus estilos para tabletas */
-}
-
-/* Estilos para pantallas de escritorio */
-@media (min-width: 992px) {
-  /* Agrega aquí tus estilos para pantallas de escritorio */
-}
 .footer{
     margin-top: 20px;
     background: #fcf75e;
@@ -21,12 +8,6 @@
     height: 95px;
   }
 
-  .footer img {
-    margin: 0 2%;
-    width: 10%;
-    height: auto;
-  }
-  
 .footer img{
     margin: 0 8px;
     width: 45px;
@@ -39,3 +20,9 @@
     clear: both;
     float: left;
   }
+
+  
+  
+ 
+  
+  

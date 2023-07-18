@@ -7,13 +7,14 @@ import Pie_de_pagina from "../componentes/Pie_de_pagina";
 import { Link } from "react-router-dom";
 
 
+
 function Compras() {
     return (
         <>
             <Encabezado></Encabezado>
             <Deslizable></Deslizable>
             <Texto></Texto>
-            <h1 className="Exclamar">!Nuestros Anillos!</h1>
+            <h1 className="Exclamar">¡Nuestros Anillos!</h1>
             <Carrito></Carrito>
             <div class="boton">
                 <Link to="/Confirmacion">Comprar</Link>

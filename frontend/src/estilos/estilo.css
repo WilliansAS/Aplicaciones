@@ -514,20 +514,6 @@ Esta parte es el css para el metodo de pago
   color: hsl(228deg, 45%, 44%);
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 767px) {
-  /* Agrega aquí tus estilos para dispositivos móviles */
-}
-
-/* Estilos para tabletas */
-@media (min-width: 768px) and (max-width: 991px) {
-  /* Agrega aquí tus estilos para tabletas */
-}
-
-/* Estilos para pantallas de escritorio */
-@media (min-width: 992px) {
-  /* Agrega aquí tus estilos para pantallas de escritorio */
-}
 .footer{
     margin-top: 20px;
     background: #fcf75e;

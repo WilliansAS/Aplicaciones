@@ -14,7 +14,7 @@ function Categorias(){
         
         <Deslizable />
 
-  <p id="texto">
+  <p id="parf">
     Explora las diferentes opciones de temáticas y estilos de bodas, desde lo
     clásico y romántico hasta lo moderno y vanguardista. Descubre cómo
     incorporar elementos de diseño únicos y detalles personalizados que harán

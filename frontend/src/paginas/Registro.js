@@ -35,7 +35,7 @@ function Registro() {
     return (
         <>
  <Encabezado></Encabezado>
-            <form onSubmit={registrar} className="formulario">
+            <form onSubmit={registrar} className="registro">
                 <h1 className="py-4">Registro</h1>
                 <div className="mb-3">
                     <input
@@ -88,9 +88,9 @@ function Registro() {
                 </div>
                 <h6 className="py-4">
                     ¿Ya tienes una cuenta?
-                    <Link to="/acceso">Inicia sesión</Link>
+                    <Link to="/acceso"> Inicia sesión</Link>
                 </h6>
-                <button type="submit" className="btn bg-marino w-100 rounded-10 text-black">
+                <button type="submit">
                     Ingresar
                 </button>
             </form>

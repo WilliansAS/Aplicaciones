@@ -3,21 +3,6 @@
   src: url('../tipografia/Fenix-Regular.ttf') format('opentype');
 }
 
-/* Estilos para dispositivos móviles */
-@media (max-width: 767px) {
-  /* Agrega aquí tus estilos para dispositivos móviles */
-}
-
-/* Estilos para tabletas */
-@media (min-width: 768px) and (max-width: 991px) {
-  /* Agrega aquí tus estilos para tabletas */
-}
-
-/* Estilos para pantallas de escritorio */
-@media (min-width: 992px) {
-  /* Agrega aquí tus estilos para pantallas de escritorio */
-}
-
 
 *{
   font-family: 'Fenix';
@@ -34,6 +19,7 @@
       background: url("https://images.pexels.com/photos/5085334/pexels-photo-5085334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") 50% no-repeat;
       background-size: cover;
       height: 75vh;
+      width: 94%;
       text-align: center;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -51,9 +37,9 @@
       text-shadow: 1px 1px 2px #0a0a0a;
     }
     
-  body p{
-    margin: 10px 15px;
-    text-align: center;
+  #parrafo{
+    margin: 15px 50px;
+    text-align: justify;
     font-size: 20px;
     font-weight: 400;
   }
@@ -66,6 +52,7 @@
   
    body h3{
     text-align: center;
+    margin: 0 30px;
    }
   
     

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Encabezado from "../componentes/Encabezado";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import '../estilos/acceso.css';
 
 function Acceso() {
@@ -51,7 +51,11 @@ function Acceso() {
                                     onChange={e => setCampos({ ...campos, contrasenia: e.target.value })} className="form input-field">
                                 </input>
                             </div>
-                            <button type="submit" className="btn bg-marino w-100 rounded-10 text-black">Ingresar</button>
+                            <h6 className="py-4">
+                            ¿No tienes cuenta?
+                            <Link to="/registrar"> Registrate</Link>
+                            </h6>
+                            <button type="submit">Ingresar</button>
                         </form>
                     </div>
                 </div>

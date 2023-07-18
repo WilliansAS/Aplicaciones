@@ -18,7 +18,7 @@ function Inicio(){
       </h4>
     </div>
   </div>
-  <p>
+  <p id="parrafo">
     ¡Bienvenidos a nuestro sitio web de bodas, el destino perfecto para todas
     tus necesidades matrimoniales! En nuestra página web, te sumergirás en un
     mundo lleno de inspiración, ideas y recursos para planificar la boda de tus

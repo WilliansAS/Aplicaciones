@@ -11,7 +11,7 @@ function Texto(){
     <Link to="/Categorias">
       <img src={require('../imagenes/carrito02.png')} alt="Carrito_Compras" id="foto" />
     </Link>
-    <h1 className="Exclamar">!LA BODA DE TUS SUEÑOS!</h1>
+    <h1 className="Exclamar">¡LA BODA DE TUS SUEÑOS!</h1>
     <p>
       Gracias a nuestro amplio repertorio de aliados, podemos ofrecer a nuestros
       clientes una experiencia más diversa, en cuánto a la selección de todos
