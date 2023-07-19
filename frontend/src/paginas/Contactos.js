@@ -23,6 +23,7 @@ const registrar = (e) => {
         .then(respuesta => {
             if (respuesta.data.Estatus === "CORRECTO") {
                 navegacion('/')
+                alert('¡Formulario enviado con éxito!');
             } else {
                 setError(respuesta.data.Error);
             }

@@ -26,25 +26,29 @@
     }
   }
   
-  .holy-grail-left,
+  
   .holy-grail-middle
    {
     padding: 1rem;
     border: 1px solid #ededed;
     background-color: #ffffff;
     width: 98%;
-    height: 100%;
+    height: auto;
+    border-radius: 5px;
   }
   
-  .holy-grail-header {
-    -ms-grid-column: 1;
-        grid-column-start: 1;
-    grid-column-end: 4;
-    -ms-grid-row: 1;
-        grid-row-start: 1;
+  .holy-grail-left{
+    padding: 1rem;
+    border: 1px solid #ededed;
+    background-color: #ffffff;
+    width: 98%;
+    height: 200px;
+    border-radius: 5px;
+    margin: 0 12px;
   }
+
   
-  @media screen and (max-width: 60em) {
+  @media screen and (max-width: 20em) {
     .holy-grail-left {
       -ms-grid-row: 2;
           grid-row-start: 2;
@@ -54,6 +58,7 @@
     }
   }
   
+  
   @media screen and (max-width: 60em) {
     .holy-grail-middle {
       -ms-grid-row: 3;
@@ -61,6 +66,7 @@
       -ms-grid-column: 1;
           grid-column-start: 1;
       grid-column-end: 4;
+      
     }
   }
   
@@ -74,6 +80,67 @@
     }
   }
   
+     /* Estilos para el contenedor principal */
+     .contenedor-principal {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      text-align: center;
+      padding: 20px;
+      width: auto;
+    }
+
+    /* Estilos para los contenedores internos */
+    .contenedor-interno {
+      border-radius: 20px;
+      text-align: center;
+      border: 1px solid #ccc;
+      background-image: linear-gradient(330deg, #f376fa 0, #f376fa 50%, #f376fa 100%);
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    /* Estilos para el icono */
+    .icono {
+      font-size: 50px;
+      margin-bottom: 10px;
+      
+    }
+
+    /* Estilos para el título */
+    .titulo {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      
+    }
+
+    /* Estilos para el texto */
+    .texto2 {
+      margin: 15px;
+      
+    }
+
+    /* Estilos para los botones */
+    .boton {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 14px;
+      background-color: #6dd2a0eb;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   
-  
+    #menu{
+      width: 100%;
+      background-color: #7d71ebed;
+      height: 50px;
+    }
+
+    #menu h3{
+      padding-top: 7px;
+      color: #ffffff;
+    }
   
