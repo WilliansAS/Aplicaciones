@@ -17,6 +17,7 @@ function Tabla3(){
          .catch(error=>console.log(error));
      },[]); 
 
+
     return(
         <>
         <table className="table table-striped">

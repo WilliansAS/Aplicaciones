@@ -15,6 +15,7 @@ function Acceso() {
 
     const acceder = (e) => {
         e.preventDefault();
+    
         axios
         .post('http://localhost:8082/acceso', campos)
             .then(respuesta => {
@@ -28,10 +29,9 @@ function Acceso() {
             .catch(error => console.log(error));
 
     }
-
+    
     return (
         <>
-
             <Encabezado></Encabezado>
             <div className="container-fluid w-50 p-3 text-center container-background">
                 <h1 className="mb-4 mt-2">Acceso</h1>

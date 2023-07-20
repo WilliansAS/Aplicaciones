@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import '../estilos/registro.css';
 import { Link } from 'react-router-dom';
 
-function Registro() {
+function Dashregistro() {
 
     const [campos, setCampos] = useState({
         nombre_usuario: "",
@@ -20,12 +20,15 @@ function Registro() {
 
     const registrar = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8082/registrarUsuario', campos)
+        axios.post('http://localhost:8082/registrar', campos)
             .then(respuesta => {
                 if (respuesta.data.Estatus === "CORRECTO") {
-                    navegacion('/acceso')
+                    navegacion('/Panel')
+                    alert('¡Se agrego nuevo usuario!');
+                    
                 } else {
                     setError(respuesta.data.Error);
+                    
                 }
             })
             .catch(error => console.log(error));
@@ -34,7 +37,7 @@ function Registro() {
 
     return (
         <>
- <Encabezado></Encabezado>
+
             <form onSubmit={registrar} className="registro">
                 <h1 className="py-4">Registro</h1>
                 <div className="mb-3">
@@ -98,4 +101,4 @@ function Registro() {
     );
 }
 
-export default Registro;
+export default Dashregistro;

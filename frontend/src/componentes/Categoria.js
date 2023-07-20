@@ -31,9 +31,9 @@ function Categoria(){
     <div className="inner-container" key={lacategoria.id_categoria}>
       <img className="image" src={require("../imagenes/"+lacategoria.imagen)} alt="Imagen 1" />
       <Link to={"/Salones/"+lacategoria.id_categoria}><h3>{lacategoria.nombre_categoria}</h3></Link>
-      <p>
+     <div> <p>
       {lacategoria.descripcion_categoria}
-      </p>
+      </p></div>
     </div>
     
     </>
