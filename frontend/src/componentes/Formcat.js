@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import Encabezado from "../componentes/Encabezado";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import '../estilos/registro.css';
-import { Link } from 'react-router-dom';
 
-function Formulario1(){
+function Formulario1({ onRegistroExitoso }){
     const [campos, setCampos] = useState({
         nombre_categoria: "",
-        descripcion_categoria: ""
+        descripcion_categoria: "",
+        imagen: ""
     });
 
     const [error, setError] = useState();
@@ -20,18 +19,32 @@ function Formulario1(){
             .then(respuesta => {
                 if (respuesta.data.Estatus === "CORRECTO") {
                     navegacion('/panel')
-                } else {
-                    setError(respuesta.data.Error);
-                }
-            })
-            .catch(error => console.log(error));
-
-    }
+                    alert('¡Se agregó una nueva categoria!');
+                    setCampos({
+                      nombre_categoria: "",
+                      descripcion_categoria: "",
+                      imagen: ""
+                    });
+                 // Aquí llamamos a la función para actualizar el conteo de usuarios
+          axios.get('http://localhost:8082/numCategorias')
+          .then(respuesta => {
+            if (respuesta.data.Estatus === 'Exitoso') {
+              onRegistroExitoso(respuesta.data.Resultado);
+            } else {
+              console.log("Error");
+            }
+          })
+          .catch(error => console.log(error));
+      } else {
+        setError(respuesta.data.Error);
+      }
+    })
+    .catch(error => console.log(error));
+}
 
     return (
         <>
- <Encabezado></Encabezado>
-            <form onSubmit={registrar} className="formulario">
+            <form onSubmit={registrar} className="registro">
                 <h1 className="py-4">Registro Categorías</h1>
                 <div className="mb-3">
                     <input
@@ -42,6 +55,7 @@ function Formulario1(){
                         className="form-control rounded-21"
                     />
                 </div>
+
                 <div className="mb-3">
                     <input
                         type="text"
@@ -51,7 +65,17 @@ function Formulario1(){
                         className="form-control rounded-21"
                     />
                 </div>
-                <button type="submit" className="btn bg-marino w-100 rounded-10 text-black">
+
+                <div className="mb-3">
+                    <input
+                        type="text"
+                        placeholder="Agrega una imagen"
+                        name="imagen"
+                        onChange={e => setCampos({ ...campos, imagen: e.target.value })}
+                        className="form-control rounded-21"
+                    />
+                </div>
+                <button type="submit" className="btn bg-marino w-100 rounded-10 ">
                     Ingresar
                 </button>
             </form>

@@ -49,7 +49,7 @@ useEffect(()=> {
             <div className='texto'>
             <p>{elproducto.descripcion_producto}</p>
             </div>
-            <h5>$ {elproducto.precio_mayoria}</h5>
+            <h5>$ {elproducto.precio_unitario}</h5>
             <button type="button" class="btn btn-success">Comprar</button>
           </div>
         </div>

@@ -13,8 +13,9 @@ import Salones from './paginas/Salones';
 import Registro from './paginas/Registro';
 import Acceso from './paginas/Acceso';
 import Panel from './paginas/Panel';
-import Formulario1 from './paginas/FormCat';
 import Dashregistro from './componentes/Formus';
+import Formulario1 from './componentes/Formcat';
+import Formulario2 from './componentes/Formprod';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
       <Route path='/acceso' element={<Acceso/>}></Route>
       <Route path='/panel' element={<Panel/>}></Route>
       <Route path='/form1' element={<Formulario1/>}></Route>
+      <Route path='/form2' element={<Formulario2/>}></Route>
       <Route path='/formus' element={<Dashregistro/>}></Route>
       </Routes>
     </BrowserRouter>

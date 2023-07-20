@@ -7,6 +7,8 @@ import Tabla2 from "../componentes/Tablausu";
 import Tabla1 from "../componentes/Tablaprod";
 import Tabla3 from "../componentes/Tablacat";
 import Dashregistro from "../componentes/Formus";
+import Formulario1 from '../componentes/Formcat';
+import Formulario2 from '../componentes/Formprod';
 
 
 function Panel(){
@@ -19,18 +21,27 @@ function Panel(){
       setMostrarUsuarios(true);
       setMostrarProductos(false);
       setMostrarCategorias(false);
+      setMostrarFormUs(false);
+      setMostrarFormCat(false);
+      setMostrarFormProd(false);
   };
 
   const handleMostrarProductos = () => {
       setMostrarUsuarios(false);
       setMostrarProductos(true);
       setMostrarCategorias(false);
+      setMostrarFormUs(false);
+      setMostrarFormCat(false);
+      setMostrarFormProd(false);
   };
 
   const handleMostrarCategorias = () => {
       setMostrarUsuarios(false);
       setMostrarProductos(false);
       setMostrarCategorias(true);
+      setMostrarFormUs(false);
+      setMostrarFormCat(false);
+      setMostrarFormProd(false);
   };
 
   //Mostrar formularios
@@ -42,18 +53,27 @@ function Panel(){
     setMostrarFormUs(true);
     setMostrarFormProd(false);
     setMostrarFormCat(false);
+    setMostrarUsuarios(false);
+    setMostrarProductos(false);
+    setMostrarCategorias(false);
 };
 
 const handleMostrarFormProd = () => {
   setMostrarFormUs(false);
   setMostrarFormProd(true);
   setMostrarFormCat(false);
+  setMostrarUsuarios(false);
+  setMostrarProductos(false);
+  setMostrarCategorias(false);
 };
 
 const handleMostrarFormCat = () => {
   setMostrarFormUs(false);
   setMostrarFormProd(false);
   setMostrarFormCat(true);
+  setMostrarUsuarios(false);
+  setMostrarProductos(false);
+  setMostrarCategorias(false);
 };
 
 //Contador de usuarios
@@ -101,6 +121,21 @@ useEffect(()=> {
     .catch(error=>console.log(error));
 },[]); 
 
+//Actualizar conteo de usuarios
+const handleActualizarUsuarios = (cantidad) => {
+  setNumusuarios(cantidad);
+};
+
+//Actualizar conteo de productos
+const handleActualizarProductos = (cantidad) => {
+  setNumproductos(cantidad);
+};
+
+//Actualizar conteo de categorias
+const handleActualizarCategorias = (cantidad) => {
+  setNumcategorias(cantidad);
+};
+
     return(
         <>
         <Encabezado />
@@ -129,7 +164,8 @@ useEffect(()=> {
   <div className="contenedor-interno">
     <span className="icono">👤</span>
     <h2 className="titulo">Usuarios</h2>
-    <p className="texto2">Usuarios registrados: {usuarios.Usuarios}</p>
+    <p className="texto2">Usuarios registrados:</p>
+    <h3>{usuarios.Usuarios}</h3>
     <Link to="" onClick={handleMostrarFormUs}><button className="boton">Agregar</button></Link>
     <button className="boton">Eliminar</button>
   </div>
@@ -142,8 +178,9 @@ useEffect(()=> {
   <div className="contenedor-interno">
     <span className="icono">🛒</span>
     <h2 className="titulo">Productos</h2>
-    <p className="texto2">Productos registrados: {productos.Productos}</p>
-    <button className="boton">Agregar</button>
+    <p className="texto2">Productos registrados:</p>
+    <h3>{productos.Productos}</h3>
+    <Link to="" onClick={handleMostrarFormProd}><button className="boton">Agregar</button></Link>
     <button className="boton">Eliminar</button>
   </div>
   </>
@@ -155,8 +192,9 @@ useEffect(()=> {
   <div className="contenedor-interno">
     <span className="icono">📝</span>
     <h2 className="titulo">Categorias</h2>
-    <p className="texto2">Categorias registrados: {categorias.Categorias}</p>
-    <button className="boton">Agregar</button>
+    <p className="texto2">Categorias registradas:</p>
+    <h3>{categorias.Categorias}</h3>
+    <Link to="" onClick={handleMostrarFormCat}><button className="boton">Agregar</button></Link>
     <button className="boton">Eliminar</button>
   </div>
   </>
@@ -165,17 +203,20 @@ useEffect(()=> {
   <div className="contenedor-interno">
     <span className="icono">🛒</span>
     <h2 className="titulo">Pedidos</h2>
-    <p className="texto2">Contenedor 4.</p>
+    <p className="texto2">Pedidos registrados:</p>
     <button className="boton">Agregar</button>
     <button className="boton">Eliminar</button>
   </div>
 </div>
 
+
 <div>
 {mostrarUsuarios && <Tabla2 />} {/* Muestra Tabla2 cuando mostrarUsuarios es true */}
 {mostrarProductos && <Tabla1 />} {/* Muestra Tabla1 cuando mostrarProductos es true */}
 {mostrarCategorias && <Tabla3 />} {/* Muestra Tabla3 cuando mostrarCategorias es true */}
-{mostrarFormUs && <Dashregistro />} {/* Muestra Tabla3 cuando mostrarCategorias es true */}
+{mostrarFormUs && <Dashregistro onRegistroExitoso={handleActualizarUsuarios} />} {/* Muestra Tabla3 cuando mostrarCategorias es true */}
+{mostrarFormCat && <Formulario1 onRegistroExitoso={handleActualizarCategorias}/>}
+{mostrarFormProd && <Formulario2 onRegistroExitoso={handleActualizarProductos}/>}
 </div>
  
   </div>

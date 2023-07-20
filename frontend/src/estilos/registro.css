@@ -36,8 +36,7 @@ form button[type="submit"] {
   margin-top: 20px;
 }
 
-form button[type="submit"]:hover {
-  
+form button[type="submit"]:hover {  
   background-color: #0056b3;
 }
 

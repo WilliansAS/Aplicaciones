@@ -25,7 +25,6 @@ function Tabla1(){
       <th scope="col">#</th>
       <th scope="col">Nombre Producto</th>
       <th scope="col">Precio Unitario</th>
-      <th scope="col">Precio Mayoria</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Imagen</th>
       <th scope="col">Categoria</th>
@@ -39,7 +38,6 @@ function Tabla1(){
       <th scope="row">{elproducto.id_producto}</th>
       <td>{elproducto.nombre_producto}</td>
       <td>{elproducto.precio_unitario}</td>
-      <td>{elproducto.precio_mayoria}</td>
       <td>{elproducto.descripcion_producto}</td>
       <td>{elproducto.imagen}</td>
       <td>{elproducto.id_categoria_id}/</td>

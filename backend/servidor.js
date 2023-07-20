@@ -114,14 +114,27 @@ app.get('/obtenerProductos/:id',(peticion, respuesta)=>{
   
 //Registrar categorias
 app.post('/registrarcat', (peticion,respuesta)=>{
-    const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria) VALUES(?,?)";
-    conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria],
+    const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria,imagen) VALUES(?,?,?)";
+    conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria,peticion.body.imagen],
     (error,resultado)=>{
         if(error) return respuesta.json({mensaje:"Error en la consulta"});
         if(resultado){
             return respuesta.json({Estatus:"CORRECTO"});
         }
     })
+});
+
+//Registrar productos
+app.post('/registrarprod', (peticion,respuesta)=>{
+  const { nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id } = peticion.body;
+  const sql="INSERT INTO productos(nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id) VALUES(?,?,?,?,?)";
+  conexion.query(sql,[nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id],
+  (error,resultado)=>{
+      if(error) return respuesta.json({mensaje:"Error en la consulta"});
+      if(resultado){
+          return respuesta.json({Estatus:"CORRECTO"});
+      }
+  })
 });
 
 //Registrar mensajes de contacto
