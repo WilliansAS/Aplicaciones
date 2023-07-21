@@ -67,7 +67,7 @@ function Usuarios({ onEliminacionExitoso }){
     <div className="textous">Numero Telefono: {elusuario.numero_telefono}</div>
     <div className="textous">Direccion: {elusuario.direccion}</div>
     <div className="textous">Correo Electronico: {elusuario.correo}</div>
-    <div className="textous">Contraseña: {elusuario.contrasenia}</div>
+    {/*<div className="textous">Contraseña: {elusuario.contrasenia}</div>*/}
     <div className="botoneus">
     <button type="button" class="btonus" onClick={() => eliminarUsuario(elusuario.id_usuario)}>Eliminar</button>
       

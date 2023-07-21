@@ -57,7 +57,7 @@ nav ul {
 nav ul li {
   padding-top: 10px;
   display: inline;
-  /*PADDING: TOP, RIGHT BOTTOM LEFT*/
+  
   padding: 5px 10PX 5PX 10px;
 }
 
@@ -68,7 +68,6 @@ nav a:hover {
 
 #first_img {
   padding: 0 6%;
-  /*max-width: 80%;*/
   max-height: 400px;
 }
 
@@ -157,13 +156,11 @@ section {
   border-radius: 5%;
   width: 100%;
 
-  /*Se le agrega radius and transition*/
-
   border-radius: 5%;
   transition: 0.8s;
 }
 
-/*Se le agrega over a la foto de las carreras*/
+
 
 .proveedor img:hover{
   opacity: 80%;
@@ -230,26 +227,28 @@ section h1 {
   width: fit-content;
 }
 
-.boton {
+.botoncar {
   text-align: center;
 }
 
-.boton a {
+.botoncar a {
   width: 40%;
   margin-top: 5%;
   margin-bottom: 5%;
   height: 30px;
-  background: rgb(3, 148, 193);
+  background-color: #f08080;
+  color: #ffffff;
   text-align: center;
   text-decoration: none;
-  color: #ffffff;
   border-radius: 5%;
+  cursor: pointer;
   display: inline-block;
 }
 
-.boton a:hover {
-  color: rgb(3, 148, 193);
-  background-color: #ffffff;
+.botoncar a:hover {
+  background-color: #ff2d55;
+  text-decoration: none;
+  color: #fff;
 }
 
 /*
@@ -262,7 +261,6 @@ Esta parte es el css para el metodo de pago
 }
 
 .main-container__background-section {
-  /*background-image: url("IMG/tarjeta_credito.jpg");*/
   background-repeat: no-repeat;
   height: 240px;
   position: relative;
@@ -279,7 +277,7 @@ Esta parte es el css para el metodo de pago
   }
 
   .main-container__background-section {
-    /*background-image: url("IMG/tarjeta_credito.jpg");*/
+
     width: 900px;
     height: 900px;
   }
@@ -289,7 +287,6 @@ Esta parte es el css para el metodo de pago
   width: 288px;
   height: 160px;
   padding: 20px;
-  /*background-image: url("IMG/tarjeta_credito.jpg");*/
   background-repeat: no-repeat;
   background-size: contain;
   position: absolute;
@@ -541,7 +538,3 @@ Esta parte es el css para el metodo de pago
     clear: both;
     float: left;
   }
-
-
-
-

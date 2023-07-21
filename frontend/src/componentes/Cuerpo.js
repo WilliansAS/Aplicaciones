@@ -1,6 +1,7 @@
 import React from "react";
 import Encabezado from "../componentes/Encabezado";
 import { Link } from "react-router-dom";
+import Carrito from "../componentes/Carrito";
 
 function Cuerpo(){
     return(
@@ -8,7 +9,7 @@ function Cuerpo(){
         <Encabezado></Encabezado>
         <div className="acomodo">
   <section id="Texto">
-    {/*En este HREF haremos referencia a la página CATEGORIAS, tanto en la IMG, como en el HREF*/}
+   
     <a href="lista_pro.html">
       <img src={require('../imagenes/colaboradores.jpg')} alt="Nuestra_Ayuda" id="foto" />
     </a>
@@ -23,29 +24,9 @@ function Cuerpo(){
       Para conocer más acerca de detalles de nuestros convenios y nuestros
       aliados, te invitamos a conocer nuestros <Link to="#">Aliados Unidos.</Link>
     </p>
-    <h1 className="Exclamar">!TU CARRITO!</h1>
-    <div className="container">
-      <div className="row">
-        {/* Elementos generados a partir del JSON */}
-        <main id="items" className="col-sm-8 row"></main>
-        {/* Carrito */}
-        <aside className="col-sm-4">
-          <h2>Carrito</h2>
-          {/* Elementos del carrito */}
-          <ul id="carrito" className="list-group" />
-          <hr />
-          {/* Precio total */}
-          <p className="text-right">
-            Total: <span id="total" /> MXN
-          </p>
-          <button id="boton-vaciar" className="btn btn-danger">
-            Vaciar
-          </button>
-        </aside>
-      </div>
-    </div>
+    <Carrito></Carrito>
     <hr />
-    <div className="boton">
+    <div className="botoncar">
       <Link to="/Compras">Confirmación De Compra</Link>
       <Link to="/">Comprar</Link>
     </div>

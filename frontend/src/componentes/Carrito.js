@@ -1,6 +1,7 @@
 import React from "react";
 import "../estilos/Carrito.css";
 import { useCarrito } from "../context/CarritoContext";
+import { Link } from "react-router-dom";
 
 function Carrito() {
   const { carrito, eliminarProducto } = useCarrito();
@@ -50,9 +51,9 @@ function Carrito() {
             </tr>
           </tfoot>
         </table>
-        <a href="/" className="btn">
+        <Link to="/Confirmacion" className="btn">
           Pagar
-        </a>
+        </Link>
       </div>
     </section>
   );
