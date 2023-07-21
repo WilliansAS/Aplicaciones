@@ -12,9 +12,15 @@ import Formulario2 from '../componentes/Formprod';
 import Usuarios from '../componentes/Dashusers';
 import Dashprod from '../componentes/Dashprod';
 import Dashcat from '../componentes/Dashcat';
+import { useCarrito } from "../context/CarritoContext"; 
+import Carrito from '../componentes/Carrito';
 
 
 function Panel(){
+  const { carrito } = useCarrito(); // Obtenemos el estado del carrito del contexto
+  // Obtenemos la cantidad total de productos en el carrito
+  const totalProductosEnCarrito = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+
   //Mostrar registros
   const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
   const [mostrarProductos, setMostrarProductos] = useState(false);
@@ -30,6 +36,7 @@ function Panel(){
       setMostrarContUs(false);
       setMostrarContProd(false);
       setMostrarContCat(false);
+      setMostrarCarrito(false);
   };
 
   const handleMostrarProductos = () => {
@@ -42,6 +49,7 @@ function Panel(){
       setMostrarContUs(false);
       setMostrarContProd(false);
       setMostrarContCat(false);
+      setMostrarCarrito(false);
   };
 
   const handleMostrarCategorias = () => {
@@ -54,6 +62,7 @@ function Panel(){
       setMostrarContUs(false);
       setMostrarContProd(false);
       setMostrarContCat(false);
+      setMostrarCarrito(false);
   };
 
    //Mostrar contenedores
@@ -71,6 +80,7 @@ function Panel(){
     setMostrarFormUs(false);
     setMostrarFormCat(false);
     setMostrarFormProd(false);
+    setMostrarCarrito(false);
    }
 
    const handleMostrarContProd = () =>{
@@ -83,6 +93,7 @@ function Panel(){
     setMostrarFormUs(false);
     setMostrarFormCat(false);
     setMostrarFormProd(false);
+    setMostrarCarrito(false);
    }
 
    const handleMostrarContCat = () =>{
@@ -95,6 +106,7 @@ function Panel(){
     setMostrarFormUs(false);
     setMostrarFormCat(false);
     setMostrarFormProd(false);
+    setMostrarCarrito(false);
    }
 
 
@@ -113,6 +125,7 @@ function Panel(){
     setMostrarContUs(false);
     setMostrarContProd(false);
     setMostrarContCat(false);
+    setMostrarCarrito(false);
 };
 
 const handleMostrarFormProd = () => {
@@ -125,12 +138,29 @@ const handleMostrarFormProd = () => {
   setMostrarContUs(false);
   setMostrarContProd(false);
   setMostrarContCat(false);
+  setMostrarCarrito(false);
 };
 
 const handleMostrarFormCat = () => {
   setMostrarFormUs(false);
   setMostrarFormProd(false);
   setMostrarFormCat(true);
+  setMostrarUsuarios(false);
+  setMostrarProductos(false);
+  setMostrarCategorias(false);
+  setMostrarContUs(false);
+  setMostrarContProd(false);
+  setMostrarContCat(false);
+  setMostrarCarrito(false);
+};
+
+const [mostrarCarrito, setMostrarCarrito] = useState(false);
+
+const handleMostrarCarrito = () => {
+  setMostrarCarrito(true);
+  setMostrarFormUs(false);
+  setMostrarFormProd(false);
+  setMostrarFormCat(false );
   setMostrarUsuarios(false);
   setMostrarProductos(false);
   setMostrarCategorias(false);
@@ -267,8 +297,8 @@ const handleActualizarCategorias = (cantidad) => {
     <span className="icono">🛒</span>
     <h2 className="titulo">Pedidos</h2>
     <p className="texto2">Pedidos registrados:</p>
-    <button className="boton">Agregar</button>
-    <button className="boton">Eliminar</button>
+    <h3>{totalProductosEnCarrito}</h3>
+    <Link to="" onClick={handleMostrarCarrito}><button className="boton">Eliminar</button></Link>
   </div>
 </div>
 
@@ -283,6 +313,7 @@ const handleActualizarCategorias = (cantidad) => {
 {mostrarContUs && <Usuarios onEliminacionExitoso={handleActualizarUsuarios} />}
 {mostrarContProd && <Dashprod  onEliminacionExitoso={handleActualizarProductos}/>}
 {mostrarContCat && <Dashcat onEliminacionExitoso={handleActualizarCategorias}/>}
+{mostrarCarrito && <Carrito />}
 </div>
  
   </div>

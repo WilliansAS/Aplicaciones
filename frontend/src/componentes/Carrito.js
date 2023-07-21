@@ -1,36 +1,62 @@
-import React from 'react';
-import '../estilos/Deslizable.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import "../estilos/Carrito.css";
+import { useCarrito } from "../context/CarritoContext";
 
+function Carrito() {
+  const { carrito, eliminarProducto } = useCarrito();
 
-function Carrito(){
-    return(
-<>
-<div className="container">
-  <div className="row">
-    {/* Elementos generados a partir del JSON */}
-    <main id="items" className="col-sm-8 row"></main>
-    {/* Carrito */}
-    <aside className="col-sm-4">
-      <h2>Carrito</h2>
-      {/* Elementos del carrito */}
-      <ul id="carrito" className="list-group" />
-      <hr />
-      {/* Precio total */}
-      <p className="text-right">
-        Total: <span id="total" /> MXN
-      </p>
-      <button id="boton-vaciar" className="btn btn-danger">
-        Vaciar
-      </button>
-    </aside>
-  </div>
-</div>
-</>
-
-    );
+  return (
+    <section>
+      <h2>Carrito de compras</h2>
+      <div className="cart">
+        <table>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {carrito.map((producto) => (
+              <tr key={producto.id_producto}>
+                <td>{producto.nombre_producto}</td>
+                <td>${producto.precio_unitario}</td>
+                <td>{producto.cantidad}</td>
+                <td>${producto.precio_unitario * producto.cantidad}</td>
+                <td>
+                  <button
+                    onClick={() => eliminarProducto(producto.id_producto)}
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan={4}>Total:</td>
+              <td>
+                $
+                {carrito.reduce(
+                  (total, producto) =>
+                    total + producto.precio_unitario * producto.cantidad,
+                  0
+                )}
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+        <a href="/" className="btn">
+          Pagar
+        </a>
+      </div>
+    </section>
+  );
 }
 
 export default Carrito;
+

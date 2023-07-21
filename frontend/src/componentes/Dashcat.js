@@ -59,6 +59,7 @@ const eliminarCategoria = (id) => {
 
     return(
         <>
+         <h1>Categorías</h1>
         <div className='container'>
     {categorias.map((lacategoria, index) =>{
         return<>

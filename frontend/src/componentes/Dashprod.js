@@ -58,6 +58,7 @@ const eliminarProducto = (id) => {
 
     return(
       <>
+       <h1>Productos</h1>
       <div className="contprod">
       {productos.map((elproducto, index) =>{
         return<>

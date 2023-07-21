@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../estilos/encabezado.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { useCarrito } from "../context/CarritoContext"; // Importamos el contexto del carrito
 
 function Encabezado() {
   const login = localStorage.getItem('usuario');
@@ -15,6 +16,11 @@ function Encabezado() {
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const { carrito } = useCarrito(); // Obtenemos el estado del carrito del contexto
+
+  // Obtenemos la cantidad total de productos en el carrito
+  const totalProductosEnCarrito = carrito.reduce((total, producto) => total + producto.cantidad, 0);
 
   return (
     <header>
@@ -54,6 +60,12 @@ function Encabezado() {
               <Link to="/acceso">Acceder</Link>
             </li>
           )}
+          {/* Mostramos la cantidad de productos en el carrito */}
+          <li>
+            <Link to="/carrito">
+              Carrito ({totalProductosEnCarrito})
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

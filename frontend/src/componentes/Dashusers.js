@@ -57,6 +57,7 @@ function Usuarios({ onEliminacionExitoso }){
     
     return(
         <>
+        <h1>Usuarios</h1>
         <div className="contenido">
         {usuarios.map((elusuario, index) => {
         return<>
