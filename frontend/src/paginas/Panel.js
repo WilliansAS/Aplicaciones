@@ -9,6 +9,9 @@ import Tabla3 from "../componentes/Tablacat";
 import Dashregistro from "../componentes/Formus";
 import Formulario1 from '../componentes/Formcat';
 import Formulario2 from '../componentes/Formprod';
+import Usuarios from '../componentes/Dashusers';
+import Dashprod from '../componentes/Dashprod';
+import Dashcat from '../componentes/Dashcat';
 
 
 function Panel(){
@@ -24,6 +27,9 @@ function Panel(){
       setMostrarFormUs(false);
       setMostrarFormCat(false);
       setMostrarFormProd(false);
+      setMostrarContUs(false);
+      setMostrarContProd(false);
+      setMostrarContCat(false);
   };
 
   const handleMostrarProductos = () => {
@@ -33,6 +39,9 @@ function Panel(){
       setMostrarFormUs(false);
       setMostrarFormCat(false);
       setMostrarFormProd(false);
+      setMostrarContUs(false);
+      setMostrarContProd(false);
+      setMostrarContCat(false);
   };
 
   const handleMostrarCategorias = () => {
@@ -42,7 +51,52 @@ function Panel(){
       setMostrarFormUs(false);
       setMostrarFormCat(false);
       setMostrarFormProd(false);
+      setMostrarContUs(false);
+      setMostrarContProd(false);
+      setMostrarContCat(false);
   };
+
+   //Mostrar contenedores
+   const [mostrarContUs, setMostrarContUs] = useState(false);
+   const [mostrarContProd, setMostrarContProd] = useState(false);
+   const [mostrarContCat, setMostrarContCat] = useState(false);
+
+   const handleMostrarContUS = () =>{
+    setMostrarContUs(true);
+    setMostrarContProd(false);
+    setMostrarContCat(false);
+    setMostrarUsuarios(false);
+    setMostrarProductos(false);
+    setMostrarCategorias(false);
+    setMostrarFormUs(false);
+    setMostrarFormCat(false);
+    setMostrarFormProd(false);
+   }
+
+   const handleMostrarContProd = () =>{
+    setMostrarContUs(false);
+    setMostrarContProd(true);
+    setMostrarContCat(false);
+    setMostrarUsuarios(false);
+    setMostrarProductos(false);
+    setMostrarCategorias(false);
+    setMostrarFormUs(false);
+    setMostrarFormCat(false);
+    setMostrarFormProd(false);
+   }
+
+   const handleMostrarContCat = () =>{
+    setMostrarContUs(false);
+    setMostrarContProd(false);
+    setMostrarContCat(true);
+    setMostrarUsuarios(false);
+    setMostrarProductos(false);
+    setMostrarCategorias(false);
+    setMostrarFormUs(false);
+    setMostrarFormCat(false);
+    setMostrarFormProd(false);
+   }
+
 
   //Mostrar formularios
   const [mostrarFormUs, setMostrarFormUs] = useState(false);
@@ -56,6 +110,9 @@ function Panel(){
     setMostrarUsuarios(false);
     setMostrarProductos(false);
     setMostrarCategorias(false);
+    setMostrarContUs(false);
+    setMostrarContProd(false);
+    setMostrarContCat(false);
 };
 
 const handleMostrarFormProd = () => {
@@ -65,6 +122,9 @@ const handleMostrarFormProd = () => {
   setMostrarUsuarios(false);
   setMostrarProductos(false);
   setMostrarCategorias(false);
+  setMostrarContUs(false);
+  setMostrarContProd(false);
+  setMostrarContCat(false);
 };
 
 const handleMostrarFormCat = () => {
@@ -74,6 +134,9 @@ const handleMostrarFormCat = () => {
   setMostrarUsuarios(false);
   setMostrarProductos(false);
   setMostrarCategorias(false);
+  setMostrarContUs(false);
+  setMostrarContProd(false);
+  setMostrarContCat(false);
 };
 
 //Contador de usuarios
@@ -167,7 +230,7 @@ const handleActualizarCategorias = (cantidad) => {
     <p className="texto2">Usuarios registrados:</p>
     <h3>{usuarios.Usuarios}</h3>
     <Link to="" onClick={handleMostrarFormUs}><button className="boton">Agregar</button></Link>
-    <button className="boton">Eliminar</button>
+    <Link to="" onClick={handleMostrarContUS}><button className="boton">Eliminar</button></Link>
   </div>
   </>
    })}
@@ -181,7 +244,7 @@ const handleActualizarCategorias = (cantidad) => {
     <p className="texto2">Productos registrados:</p>
     <h3>{productos.Productos}</h3>
     <Link to="" onClick={handleMostrarFormProd}><button className="boton">Agregar</button></Link>
-    <button className="boton">Eliminar</button>
+    <Link to="" onClick={handleMostrarContProd}><button className="boton">Eliminar</button></Link>
   </div>
   </>
    })}
@@ -195,7 +258,7 @@ const handleActualizarCategorias = (cantidad) => {
     <p className="texto2">Categorias registradas:</p>
     <h3>{categorias.Categorias}</h3>
     <Link to="" onClick={handleMostrarFormCat}><button className="boton">Agregar</button></Link>
-    <button className="boton">Eliminar</button>
+    <Link to="" onClick={handleMostrarContCat}><button className="boton">Eliminar</button></Link>
   </div>
   </>
    })}
@@ -217,6 +280,9 @@ const handleActualizarCategorias = (cantidad) => {
 {mostrarFormUs && <Dashregistro onRegistroExitoso={handleActualizarUsuarios} />} {/* Muestra Tabla3 cuando mostrarCategorias es true */}
 {mostrarFormCat && <Formulario1 onRegistroExitoso={handleActualizarCategorias}/>}
 {mostrarFormProd && <Formulario2 onRegistroExitoso={handleActualizarProductos}/>}
+{mostrarContUs && <Usuarios onEliminacionExitoso={handleActualizarUsuarios} />}
+{mostrarContProd && <Dashprod  onEliminacionExitoso={handleActualizarProductos}/>}
+{mostrarContCat && <Dashcat onEliminacionExitoso={handleActualizarCategorias}/>}
 </div>
  
   </div>

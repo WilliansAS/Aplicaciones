@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Tabla2(){
-    const[usuarios, setUsuario] = useState([]);
+  const[usuarios, setUsuario] = useState([]);
   useEffect(()=> {
       axios.get('http://localhost:8082/obtenerUsuarios')
       .then(respuesta => {

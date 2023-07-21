@@ -15,11 +15,26 @@ function Formulario1({ onRegistroExitoso }){
 
     const registrar = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8082/registrarcat', campos)
+
+        // Validar campos requeridos
+    if (!campos.nombre_categoria || !campos.descripcion_categoria ||  !campos.imagen) {
+        setError("Por favor, complete todos los campos.");
+        return;
+      }
+  
+      setError(""); // Limpiar mensaje de error
+  
+      const formData = new FormData();
+      formData.append("nombre_categoria", campos.nombre_categoria);    
+      formData.append("descripcion_categoria", campos.descripcion_categoria);
+      formData.append("imagen", campos.imagen);
+    
+
+        axios.post('http://localhost:8082/registrarcat', formData)
             .then(respuesta => {
                 if (respuesta.data.Estatus === "CORRECTO") {
                     navegacion('/panel')
-                    alert('¡Se agregó una nueva categoria!');
+                    alert('¡Se agregó una nueva categoría!');
                     setCampos({
                       nombre_categoria: "",
                       descripcion_categoria: "",
@@ -68,11 +83,15 @@ function Formulario1({ onRegistroExitoso }){
 
                 <div className="mb-3">
                     <input
-                        type="text"
+                        type="file"
                         placeholder="Agrega una imagen"
                         name="imagen"
-                        onChange={e => setCampos({ ...campos, imagen: e.target.value })}
+                        accept="image/*"
                         className="form-control rounded-21"
+                        required
+                        onChange={(e) =>
+                          setCampos({ ...campos, imagen: e.target.files[0] })
+                        }
                     />
                 </div>
                 <button type="submit" className="btn bg-marino w-100 rounded-10 ">

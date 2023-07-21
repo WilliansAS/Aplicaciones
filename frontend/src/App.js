@@ -16,6 +16,9 @@ import Panel from './paginas/Panel';
 import Dashregistro from './componentes/Formus';
 import Formulario1 from './componentes/Formcat';
 import Formulario2 from './componentes/Formprod';
+import Usuarios from './componentes/Dashusers';
+import Dashprod from './componentes/Dashprod';
+import Dashcat from './componentes/Dashcat';
 
 
 function App() {
@@ -36,6 +39,9 @@ function App() {
       <Route path='/form1' element={<Formulario1/>}></Route>
       <Route path='/form2' element={<Formulario2/>}></Route>
       <Route path='/formus' element={<Dashregistro/>}></Route>
+      <Route path='/usuarios' element={<Usuarios/>}></Route>
+      <Route path='/dashprod' element={<Dashprod/>}></Route>
+      <Route path='/dashcat' element={<Dashcat/>}></Route>
       </Routes>
     </BrowserRouter>
   );

@@ -19,7 +19,23 @@ function Formulario2({ onRegistroExitoso }) {
     
   const registrar = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:8082/registrarprod', campos)
+
+    // Validar campos requeridos
+    if (!campos.nombre_producto || !campos.precio_unitario || !campos.descripcion_producto || !campos.imagen || !campos.id_categoria_id) {
+      setError("Por favor, complete todos los campos.");
+      return;
+    }
+
+    setError(""); // Limpiar mensaje de error
+
+    const formData = new FormData();
+    formData.append("nombre_producto", campos.nombre_producto);
+    formData.append("precio_unitario", campos.precio_unitario);
+    formData.append("descripcion_producto", campos.descripcion_producto);
+    formData.append("imagen", campos.imagen);
+    formData.append("id_categoria_id", campos.id_categoria_id);
+
+    axios.post('http://localhost:8082/registrarprod', formData)
       .then(respuesta => {
         if (respuesta.data.Estatus === "CORRECTO") {
           navegacion('/panel');
@@ -86,12 +102,17 @@ function Formulario2({ onRegistroExitoso }) {
 
                 <div className="mb-3">
                     <input
-                        type="text"
+                        type="file"
                         placeholder="Agrega una imagen"
                         name="imagen"
-                        onChange={e => setCampos({ ...campos, imagen: e.target.value })}
+                        accept="image/*"
                         className="form-control rounded-21"
+                        required
+                onChange={(e) =>
+                  setCampos({ ...campos, imagen: e.target.files[0] })
+                }
                     />
+                    
                 </div>
                 <div className="mb-3">
                     <input

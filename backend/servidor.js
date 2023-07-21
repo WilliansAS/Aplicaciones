@@ -3,6 +3,8 @@ import mysql from 'mysql';
 import cors from 'cors';
 import bcrypt from "bcryptjs";
 import Jwt  from 'jsonwebtoken';
+import multer from 'multer';
+import path from 'path';
 
 //CREAR LAS INSTANCIA DE EXPRESS
 const app = express();
@@ -111,24 +113,38 @@ app.get('/obtenerProductos/:id',(peticion, respuesta)=>{
     });
 });
 
-  
-//Registrar categorias
-app.post('/registrarcat', (peticion,respuesta)=>{
-    const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria,imagen) VALUES(?,?,?)";
-    conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria,peticion.body.imagen],
-    (error,resultado)=>{
-        if(error) return respuesta.json({mensaje:"Error en la consulta"});
-        if(resultado){
-            return respuesta.json({Estatus:"CORRECTO"});
-        }
-    })
+//subir imagenes al servidor
+const almacenamiento = multer.diskStorage({
+  destination: (peticion, archivo, funcion) => {
+    funcion(null, "public/imagenes");
+  },
+  filename: (peticion, archivo, funcion) => {
+    funcion(null, archivo.originalname);
+  },
+});
+
+const subirFoto = multer({
+  storage: almacenamiento,
 });
 
 //Registrar productos
-app.post('/registrarprod', (peticion,respuesta)=>{
-  const { nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id } = peticion.body;
+app.post('/registrarprod', subirFoto.single("imagen"), (peticion,respuesta)=>{
+  const { nombre_producto, precio_unitario, descripcion_producto, id_categoria_id } = peticion.body;
+  const imagen = peticion.file.filename;
   const sql="INSERT INTO productos(nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id) VALUES(?,?,?,?,?)";
   conexion.query(sql,[nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id],
+  (error,resultado)=>{
+      if(error) return respuesta.json({mensaje:"Error en la consulta"});
+      if(resultado){
+          return respuesta.json({Estatus:"CORRECTO"});
+      }
+  })
+});
+
+//Registrar categorias
+app.post('/registrarcat', subirFoto.single("imagen"), (peticion,respuesta)=>{
+  const sql="INSERT INTO categoria(nombre_categoria,descripcion_categoria,imagen) VALUES(?,?,?)";
+  conexion.query(sql,[peticion.body.nombre_categoria,peticion.body.descripcion_categoria,peticion.file.filename],
   (error,resultado)=>{
       if(error) return respuesta.json({mensaje:"Error en la consulta"});
       if(resultado){
@@ -196,6 +212,40 @@ app.get('/numCategorias',(peticion, respuesta)=>{
       return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
   });
 });
+
+// Ruta para eliminar un producto
+app.delete('/eliminarProducto/:id', (peticion, respuesta) => {
+  const id = peticion.params.id;
+  const sql = 'DELETE FROM productos WHERE id_producto = ?';
+  conexion.query(sql, [id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al eliminar el producto' });
+
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Producto eliminado correctamente' });
+  });
+});
+
+// Ruta para eliminar un usuario
+app.delete('/eliminarUsuario/:id', (peticion, respuesta) => {
+  const id = peticion.params.id;
+  const sql = 'DELETE FROM usuario WHERE id_usuario = ?';
+  conexion.query(sql, [id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al eliminar usuario' });
+
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Usuario eliminado correctamente' });
+  });
+});
+
+// Ruta para eliminar una categoria
+app.delete('/eliminarCategoria/:id', (peticion, respuesta) => {
+  const id = peticion.params.id;
+  const sql = 'DELETE FROM categoria WHERE id_categoria = ?';
+  conexion.query(sql, [id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al eliminar categoria' });
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Categoria eliminada correctamente' });
+  });
+});
+
+
 
 //INICIAR SERVIDOR
 app.listen(8082,() =>{
