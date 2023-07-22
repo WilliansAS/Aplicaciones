@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';  
 import { useNavigate } from "react-router-dom";
 import '../estilos/registro.css';
@@ -64,6 +64,21 @@ function Formulario2({ onRegistroExitoso }) {
       .catch(error => console.log(error));
   }
 
+    //Obtener las categorias
+    const[categorias, setCategoria] = useState([]);
+  useEffect(()=> {
+      axios.get('http://localhost:8082/obtenerCategorias')
+      .then(respuesta => {
+          if(respuesta.data.Estatus==='Exitoso'){
+              setCategoria(respuesta.data.Resultado);
+              
+          }else{
+            console.log("Error")
+          }
+      })
+      .catch(error=>console.log(error));
+  },[]); 
+
     return (
         <>
 
@@ -114,15 +129,24 @@ function Formulario2({ onRegistroExitoso }) {
                     />
                     
                 </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        placeholder="Categoria del producto"
+
+                <div className="mb-3">             
+                    <select 
                         name="id_categoria_id"
                         onChange={e => setCampos({ ...campos, id_categoria_id: e.target.value })}
                         className="form-control rounded-21"
-                    />
+                       
+                    >
+                       <option value="">Seleccione una categoria</option>
+                       {categorias.map((lacategoria, index) =>{
+                return<>
+                                    <option value={lacategoria.id_categoria}>{lacategoria.nombre_categoria}</option>
+                                    </>
+                                    })}
+                      </select>
+                      
                 </div>
+                
                 <button type="submit">
                     Ingresar
                 </button>
