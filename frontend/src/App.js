@@ -20,6 +20,9 @@ import Dashcat from './componentes/Dashcat';
 import { CarritoProvider } from './context/CarritoContext';
 import Formulario1 from './componentes/Formcat';
 import Carrito from './componentes/Carrito';
+import ProductoEdit from './componentes/ProductoEdit';
+import CategoriaEdit from './componentes/CategoriaEdit';
+
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -63,6 +66,11 @@ function App() {
           <Route path='/usuarios' element={<Usuarios/>}></Route>
           <Route path='/dashprod' element={<Dashprod/>}></Route>
           <Route path='/dashcat' element={<Dashcat/>}></Route>
+          <Route path='/editprod/:id' element={<ProductoEdit/>}></Route>
+          <Route path='/editcat/:id' element={<CategoriaEdit/>}></Route>
+        
+          
+      
         </Routes>
       </BrowserRouter>
     </CarritoProvider>

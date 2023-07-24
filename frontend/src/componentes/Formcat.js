@@ -72,7 +72,7 @@ function Formulario1({ onRegistroExitoso }){
                 </div>
 
                 <div className="mb-3">
-                    <input
+                    <textarea
                         type="text"
                         placeholder="Descripcion de categoría"
                         name="descripcion_categoria"
@@ -95,7 +95,7 @@ function Formulario1({ onRegistroExitoso }){
                     />
                 </div>
                 <button type="submit" className="btn bg-marino w-100 rounded-10 ">
-                    Ingresar
+                    Agregar
                 </button>
             </form>
         </>

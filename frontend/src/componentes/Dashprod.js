@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../estilos/productos.css';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Dashprod({ onEliminacionExitoso }){
@@ -74,7 +74,10 @@ const eliminarProducto = (id) => {
             <p>{elproducto.descripcion_producto}</p>
             </div>
             <h5>$ {elproducto.precio_unitario}</h5>
-            <button type="button" class="btn btn-success" onClick={() => eliminarProducto(elproducto.id_producto)}>Eliminar</button>
+            <button type="button" class="btn btn-danger" onClick={() => eliminarProducto(elproducto.id_producto)}>Eliminar</button>
+            <Link to={`/editprod/${elproducto.id_producto}`}>
+              <button className="btn btn-success">Editar</button>
+            </Link>
           </div>
         </div>
 

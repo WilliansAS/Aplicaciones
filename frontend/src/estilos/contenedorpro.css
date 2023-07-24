@@ -16,10 +16,10 @@
   }
 
   .texto{
-    float: right;
-    display: flex;
+    overflow: hidden;
     align-items: center;
-    min-height: 120px;
+    height: 120px;
+    margin-bottom: 8px;
   }
 
   .column {

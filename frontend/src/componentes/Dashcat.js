@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../estilos/dashcat.css';
-import { Link } from "react-router-dom";
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 
 function Dashcat({ onEliminacionExitoso }){
@@ -60,7 +59,7 @@ const eliminarCategoria = (id) => {
     return(
         <>
          <h1>Categorías</h1>
-        <div className='container'>
+        <div className='container2'>
     {categorias.map((lacategoria, index) =>{
         return<>
     
@@ -72,7 +71,10 @@ const eliminarCategoria = (id) => {
      <div> <p>
       {lacategoria.descripcion_categoria}
       </p></div>
-    <button className="boton" onClick={() => eliminarCategoria(lacategoria.id_categoria)}>Eliminar</button>
+    <button className="btn btn-danger" onClick={() => eliminarCategoria(lacategoria.id_categoria)}>Eliminar</button>
+    <Link to={`/editcat/${lacategoria.id_categoria}`}>
+              <button className="btn btn-success">Editar</button>
+            </Link>
     </div>
     
     </>

@@ -8,12 +8,12 @@
   }
      
       /*Categorias*/
-      .container {
+      .container2 {
         width: 100%;
         display: grid;
-        grid-gap: 30px;
+        grid-gap: 8px;
         text-align: center;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
       }
       
       .inner-container2 {

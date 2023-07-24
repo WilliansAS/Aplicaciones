@@ -32,34 +32,41 @@ function Acceso() {
     
     return (
         <>
-            <Encabezado></Encabezado>
-            <div className="container-fluid w-50 p-3 text-center container-background">
-                <h1 className="mb-4 mt-2">Acceso</h1>
-                <div className="d-flex justify-content-center align-items-center">
-                    <div className="p-3 rounded w-100">
+        <Encabezado></Encabezado>
+        <body className="inicio">
+            
+            <div className="wrapper">
+            <div class="title">Inicio de Sesión</div>
+            
                         <div className="text-danger">
                             {error && error}
                         </div>
                         <form onSubmit={acceder}>
-                            <div className="mb-3">
+                            <div className="field">
                                 <input type="email" placeholder="Correo Electrónico" name="correo"
-                                    onChange={e => setCampos({ ...campos, correo: e.target.value })} className="form-control rounded-21 input-field" autoComplete="">
+                                    onChange={e => setCampos({ ...campos, correo: e.target.value })}>
                                 </input>
                             </div>
-                            <div className="mb-3">
+                            
+                            <div className="field">
                                 <input type="password" placeholder="Contraseña" name="contrasenia"
-                                    onChange={e => setCampos({ ...campos, contrasenia: e.target.value })} className="form input-field">
+                                    onChange={e => setCampos({ ...campos, contrasenia: e.target.value })} >
                                 </input>
                             </div>
-                            <h6 className="py-4">
+
+                            <div className="field">
+                            <input type="submit" value="Ingresar">
+                                </input>
+                            </div>
+
+                            <div className="signup-link">
                             ¿No tienes cuenta?
-                            <Link to="/registrar"> Registrate</Link>
-                            </h6>
-                            <button type="submit">Ingresar</button>
+                            <Link to="/registrar"> Regístrate</Link>
+                            </div>
                         </form>
-                    </div>
+                    
                 </div>
-            </div>
+                </body>
         </>
     );
 }

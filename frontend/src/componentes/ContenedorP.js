@@ -3,7 +3,6 @@ import '../estilos/contenedorpro.css';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useCarrito } from "../context/CarritoContext";
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 function ContenedorP() {
   const [productos, setProductos] = useState([]);
@@ -54,21 +53,7 @@ function ContenedorP() {
               >
                 Comprar
               </button>
-              <PayPalScriptProvider options={{ "client-id": "AbcsaMQYqfMsORH4nNv8qVBPeCZWULhqmWTxzWJH7y2sboHlRlZBWzZh9svp1b3qnuBmIR3-NqhkfJeB" }}>
-                  <PayPalButtons 
-                    createOrder={(data, actions) =>{
-                      return actions.order.create({
-                        purchase_units: [
-                          {
-                            amount: {
-                              value:elproducto.precio_unitario
-                            },
-                          },
-                        ],
-                      });
-                    }}                  
-                  />
-                </PayPalScriptProvider>
+              
             </div>
           </div>
         ))}

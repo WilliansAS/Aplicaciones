@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../estilos/panel.css';
-import Encabezado from "../componentes/Encabezado";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Tabla2 from "../componentes/Tablausu";
 import Tabla1 from "../componentes/Tablaprod";
 import Tabla3 from "../componentes/Tablacat";
@@ -229,28 +228,61 @@ const handleActualizarCategorias = (cantidad) => {
   setNumcategorias(cantidad);
 };
 
+const login = localStorage.getItem('usuario');
+const navegacion = useNavigate();
+const [menuOpen, setMenuOpen] = useState(false);
+
+const salir = () => {
+  localStorage.clear();
+  navegacion('/');
+};
+
+const toggleMenu = () => {
+  setMenuOpen(!menuOpen);
+};
+
     return(
         <>
-        <Encabezado />
-  <div className="holy-grail-grid">
-  <div className="holy-grail-left">
-    <h3>Registros</h3>
-    <ul>
-    <li>
-        <Link to="" onClick={handleMostrarCategorias}>Categorias</Link>
-    </li>
-    <li>
-        <Link to="" onClick={handleMostrarUsuarios}>Usuarios</Link>
-    </li>
-    <li>
-        <Link to="" onClick={handleMostrarProductos}>Productos</Link>
-    </li>
-</ul>
-  </div>
+  {/*Encabezado*/}
+    <header>
+      <div className="logo">
+        <Link to="/">
+          <img src={require('../imagenes/icon_eyelash.png')} className="photo" alt="Logo" />
+          <span className="logo-text navbar-link">Marings</span>
+        </Link>
+      </div>
+      <nav className={menuOpen ? 'menu-open' : ''}>
+        <div className="menu-toggle" onClick={toggleMenu}></div>
+        <ul className="navbar">
+          <li>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li>
+          <Link to="" onClick={handleMostrarCategorias}>Categorias</Link>
+          </li>
+            <li>
+                <Link to="" onClick={handleMostrarUsuarios}>Usuarios</Link>
+            </li>
+            <li>
+                <Link to="" onClick={handleMostrarProductos}>Productos</Link>
+            </li>
+          
+          {login ? (
+            <li>
+              <Link onClick={salir}>Salir</Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/acceso">Acceder</Link>
+            </li>
+          )}
+          
+        </ul>
+      </nav>
+    </header>
+  
 
-  <div className="holy-grail-middle">
-    <div id="menu"><h3>Bienvenido Al Dashboard</h3></div>
-
+  {/*Contenedores de opciones*/}
   <div className="contenedor-principal">
   {numusuarios.map((usuarios, index) =>{
   return<>
@@ -265,7 +297,6 @@ const handleActualizarCategorias = (cantidad) => {
   </>
    })}
  
-
  {numproductos.map((productos, index) =>{
   return<>
   <div className="contenedor-interno">
@@ -274,12 +305,11 @@ const handleActualizarCategorias = (cantidad) => {
     <p className="texto2">Productos registrados:</p>
     <h3>{productos.Productos}</h3>
     <Link to="" onClick={handleMostrarFormProd}><button className="boton">Agregar</button></Link>
-    <Link to="" onClick={handleMostrarContProd}><button className="boton">Eliminar</button></Link>
+    <Link to="" onClick={handleMostrarContProd}><button className="boton">Editar</button></Link>
   </div>
   </>
    })}
-
-  
+ 
  {numcategorias.map((categorias, index) =>{
   return<>
   <div className="contenedor-interno">
@@ -288,7 +318,7 @@ const handleActualizarCategorias = (cantidad) => {
     <p className="texto2">Categorias registradas:</p>
     <h3>{categorias.Categorias}</h3>
     <Link to="" onClick={handleMostrarFormCat}><button className="boton">Agregar</button></Link>
-    <Link to="" onClick={handleMostrarContCat}><button className="boton">Eliminar</button></Link>
+    <Link to="" onClick={handleMostrarContCat}><button className="boton">Editar</button></Link>
   </div>
   </>
    })}
@@ -303,6 +333,9 @@ const handleActualizarCategorias = (cantidad) => {
 </div>
 
 
+<div className="holy-grail-middle">
+  <div id="menu"><h3>Bienvenido Al Dashboard</h3></div>
+
 <div>
 {mostrarUsuarios && <Tabla2 />} {/* Muestra Tabla2 cuando mostrarUsuarios es true */}
 {mostrarProductos && <Tabla1 />} {/* Muestra Tabla1 cuando mostrarProductos es true */}
@@ -314,13 +347,11 @@ const handleActualizarCategorias = (cantidad) => {
 {mostrarContProd && <Dashprod  onEliminacionExitoso={handleActualizarProductos}/>}
 {mostrarContCat && <Dashcat onEliminacionExitoso={handleActualizarCategorias}/>}
 {mostrarCarrito && <Carrito />}
+
+
 </div>
  
   </div>
- 
- 
-
-</div>
 
         </>
     )

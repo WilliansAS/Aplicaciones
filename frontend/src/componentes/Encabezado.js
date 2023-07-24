@@ -61,11 +61,17 @@ function Encabezado() {
             </li>
           )}
           {/* Mostramos la cantidad de productos en el carrito */}
-          <li>
+          {login ? (
+            <li>
             <Link to="/carrito">
               Carrito ({totalProductosEnCarrito})
             </Link>
           </li>
+          ) : (
+            <li>
+              <Link to="/acceso">Carrito</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

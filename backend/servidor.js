@@ -100,6 +100,32 @@ app.get('/obtenerCategorias',(peticion, respuesta)=>{
     });
 });
 
+// 6. Ruta para obtener todas las categorias por id
+app.get('/obtenerCategorias/:id',(peticion, respuesta)=>{
+  const id = peticion.params.id;
+  // 6.1 consulta sql
+  const sql="SELECT * FROM categoria WHERE id_categoria = ?";
+  // 6.2 lo envio a la conexion
+  conexion.query(sql,[id],(error,resultado)=>{
+      // 6.3 compruebo el resultado
+      if(error) return respuesta.json({Error:"Error en la consulta"});
+      return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
+  });
+});
+
+// 6. Ruta para obtener todas los productos por id
+app.get('/obtenerProducto/:id',(peticion, respuesta)=>{
+  const id = peticion.params.id;
+  // 6.1 consulta sql
+  const sql="SELECT * FROM productos WHERE id_producto = ?";
+  // 6.2 lo envio a la conexion
+  conexion.query(sql,[id],(error,resultado)=>{
+      // 6.3 compruebo el resultado
+      if(error) return respuesta.json({Error:"Error en la consulta"});
+      return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
+  });
+});
+
 //Ruta para obtener los productos por categoria 
 app.get('/obtenerProductos/:id',(peticion, respuesta)=>{
     const id = peticion.params.id;
@@ -245,6 +271,29 @@ app.delete('/eliminarCategoria/:id', (peticion, respuesta) => {
   });
 });
 
+// Ruta para actualizar un producto
+app.put('/actualizarProducto/:id', subirFoto.single("imagen"), (peticion, respuesta) => {
+  const id = peticion.params.id;
+  const { nombre_producto, precio_unitario, descripcion_producto, id_categoria_id } = peticion.body;
+  const imagen = peticion.file.filename;
+  const sql = 'UPDATE productos SET nombre_producto = ?, precio_unitario = ?, descripcion_producto = ?, imagen = ?, id_categoria_id = ? WHERE id_producto = ?';
+  conexion.query(sql, [nombre_producto, precio_unitario, descripcion_producto, imagen, id_categoria_id, id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al actualizar el producto' });
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Producto actualizado correctamente' });
+  });
+});
+
+// Ruta para actualizar una categoria
+app.put('/actualizarCategoria/:id', subirFoto.single("imagen"), (peticion, respuesta) => {
+  const id = peticion.params.id;
+  const { nombre_categoria, descripcion_categoria } = peticion.body;
+  const imagen = peticion.file.filename;
+  const sql = 'UPDATE categoria SET nombre_categoria = ?, descripcion_categoria = ?, imagen = ? WHERE id_categoria = ?';
+  conexion.query(sql, [nombre_categoria, descripcion_categoria, imagen, id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al actualizar el producto' });
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Producto actualizado correctamente' });
+  });
+});
 
 
 //INICIAR SERVIDOR

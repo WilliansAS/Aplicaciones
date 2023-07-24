@@ -1,16 +1,4 @@
 
-.holy-grail-grid {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1fr 3fr ;
-        grid-template-columns: 1fr 3fr ;
-    -ms-grid-rows: 1fr 8fr ;
-        grid-template-rows: 1fr 8fr ;
-    grid-gap: 5px;
-    height: 100vh;
-    margin-top: 15px;
-  }
-
   .botones{
       text-align: center;      
   }
@@ -35,30 +23,10 @@
     width: 98%;
     height: auto;
     border-radius: 5px;
-  }
-  
-  .holy-grail-left{
-    padding: 1rem;
-    border: 1px solid #ededed;
-    background-color: #ffffff;
-    width: 98%;
-    height: 200px;
-    border-radius: 5px;
-    margin: 0 12px;
+    height: 100%;
   }
 
-  
-  @media screen and (max-width: 20em) {
-    .holy-grail-left {
-      -ms-grid-row: 2;
-          grid-row-start: 2;
-      -ms-grid-column: 1;
-          grid-column-start: 1;
-      grid-column-end: 4;
-    }
-  }
-  
-  
+ 
   @media screen and (max-width: 60em) {
     .holy-grail-middle {
       -ms-grid-row: 3;

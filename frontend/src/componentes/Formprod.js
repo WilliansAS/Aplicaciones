@@ -83,7 +83,7 @@ function Formulario2({ onRegistroExitoso }) {
         <>
 
             <form onSubmit={registrar} className="registro">
-                <h1 className="py-4">Registro Productos</h1>
+                <h1 className="py-4">Registrar Productos</h1>
                 <div className="mb-3">
                     <input
                         type="text"
@@ -106,7 +106,7 @@ function Formulario2({ onRegistroExitoso }) {
 
                 
                 <div className="mb-3">
-                    <input
+                    <textarea
                         type="text"
                         placeholder="Descripcion del producto"
                         name="descripcion_producto"
@@ -148,7 +148,7 @@ function Formulario2({ onRegistroExitoso }) {
                 </div>
                 
                 <button type="submit">
-                    Ingresar
+                    Agregar
                 </button>
             </form>
         </>
