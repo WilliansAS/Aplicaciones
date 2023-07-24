@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import Carrito from "../componentes/Carrito";
 
 function Cuerpo(){
+  const handleComprar = () => {
+    window.alert("¡Compra realizada con éxito! Gracias por tu apoyo.");
+  };
+
     return(
         <>
         <Encabezado></Encabezado>
@@ -27,13 +31,15 @@ function Cuerpo(){
     <Carrito></Carrito>
     <hr />
     <div className="botoncar">
-      <Link to="/Compras">Confirmación De Compra</Link>
-      <Link to="/">Comprar</Link>
+      <Link to="/Compras">Cambiar Selección</Link>
+      <Link to="/" onClick={handleComprar}>Comprar</Link>
     </div>
   </section>
 </div>
         </>
     );
 }
+
+
 
 export default Cuerpo;

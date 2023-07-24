@@ -4,8 +4,7 @@ import '../estilos/contactos.css';
 import Pie_de_pagina from "../componentes/Pie_de_pagina";
 import { useNavigate } from "react-router-dom";
 import '../estilos/formcont.css';
-import axios from 'axios';
-import { Link } from 'react-router-dom'; 
+import axios from 'axios'; 
 
 function Contactos(){
   const [campos, setCampos] = useState({

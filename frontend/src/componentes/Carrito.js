@@ -5,6 +5,29 @@ import { Link } from "react-router-dom";
 
 function Carrito() {
   const { carrito, eliminarProducto } = useCarrito();
+  const login = localStorage.getItem('usuario');
+
+  if (!login) {
+    // Si el usuario no está logeado, mostrar un mensaje o un contenido diferente
+    return (
+      <section>
+        <h2>Carrito de compras</h2>
+        <p>Para ver el contenido del carrito, por favor inicia sesión o regístrate.</p>
+        <Link to="/acceso" className="btn btn-primary">
+          Iniciar sesión
+        </Link>
+        <Link to="/registro" className="btn btn-secondary">
+          Registrarse
+        </Link>
+      </section>
+    );
+  }
+
+  
+  // Función para redondear el total a dos decimales
+  const redondearTotal = (total) => {
+    return total.toFixed(2);
+  };
 
   return (
     <section>
@@ -26,7 +49,7 @@ function Carrito() {
                 <td>{producto.nombre_producto}</td>
                 <td>${producto.precio_unitario}</td>
                 <td>{producto.cantidad}</td>
-                <td>${producto.precio_unitario * producto.cantidad}</td>
+                <td>${redondearTotal(producto.precio_unitario * producto.cantidad)}</td>
                 <td>
                   <button
                     onClick={() => eliminarProducto(producto.id_producto)}
@@ -41,17 +64,18 @@ function Carrito() {
             <tr>
               <td colSpan={4}>Total:</td>
               <td>
-                $
-                {carrito.reduce(
-                  (total, producto) =>
-                    total + producto.precio_unitario * producto.cantidad,
-                  0
+                ${redondearTotal(
+                  carrito.reduce(
+                    (total, producto) =>
+                      total + producto.precio_unitario * producto.cantidad,
+                    0
+                  )
                 )}
               </td>
             </tr>
           </tfoot>
         </table>
-        <Link to="/Confirmacion" className="btn">
+        <Link to="/Confirmacion" className="btn btn-success">
           Pagar
         </Link>
       </div>
@@ -60,4 +84,3 @@ function Carrito() {
 }
 
 export default Carrito;
-

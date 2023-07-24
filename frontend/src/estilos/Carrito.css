@@ -40,3 +40,7 @@
   .cart button:hover {
     background-color: #ff2d55;
   }
+
+  .btn{
+    margin-top: 12px;
+  }

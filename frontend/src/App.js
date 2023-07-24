@@ -22,6 +22,7 @@ import Formulario1 from './componentes/Formcat';
 import Carrito from './componentes/Carrito';
 import ProductoEdit from './componentes/ProductoEdit';
 import CategoriaEdit from './componentes/CategoriaEdit';
+import CarritoEnc from './paginas/CarritoEnc';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
           <Route path='/Compras' element={<Compras productos={productos} />} />
 
           {/* Ruta para la página del carrito */}
-          <Route path='/Carrito' element={<Carrito />} />
+          <Route path='/carr' element={<CarritoEnc />} />
 
           {/* Otras rutas */}
           <Route path='/' element={<Inicio />} />
