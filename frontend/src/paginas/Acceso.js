@@ -44,18 +44,20 @@ function Acceso() {
                         <form onSubmit={acceder}>
                             <div className="field">
                                 <input type="email" placeholder="Correo Electrónico" name="correo"
-                                    onChange={e => setCampos({ ...campos, correo: e.target.value })}>
+                                    onChange={e => setCampos({ ...campos, correo: e.target.value })}
+                                    required>
                                 </input>
                             </div>
                             
                             <div className="field">
                                 <input type="password" placeholder="Contraseña" name="contrasenia"
-                                    onChange={e => setCampos({ ...campos, contrasenia: e.target.value })} >
+                                    onChange={e => setCampos({ ...campos, contrasenia: e.target.value })}
+                                    required >
                                 </input>
                             </div>
 
                             <div className="field">
-                            <input type="submit" value="Ingresar">
+                            <input type="submit" value="Ingresar"> 
                                 </input>
                             </div>
 

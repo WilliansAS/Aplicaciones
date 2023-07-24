@@ -4,7 +4,6 @@ import Pie_de_pagina from "../componentes/Pie_de_pagina";
 import '../estilos/categorias.css'
 import 'bootstrap';
 import Deslizable from "../componentes/Deslizable";
-import { Link } from "react-router-dom";
 import Categoria from "../componentes/Categoria";
 
 function Categorias(){

@@ -32,19 +32,26 @@ conexion.connect(function (error) {
 app.post('/registrarUsuario', (peticion, respuesta) => {
   const { nombre_usuario, numero_telefono, direccion, correo, contrasenia } = peticion.body;
 
+  // Validar que todos los campos requeridos estén presentes
+  if (!nombre_usuario || !numero_telefono || !direccion || !correo || !contrasenia) {
+    return respuesta.status(400).json({ mensaje: "Todos los campos son requeridos." });
+  }
+
   // Generar el hash de la contraseña
   const hash = bcrypt.hashSync(contrasenia, 10);
 
   const sql = "INSERT INTO usuario (nombre_usuario, numero_telefono, direccion, correo, contrasenia) VALUES (?, ?, ?, ?, ?)";
   conexion.query(sql, [nombre_usuario, numero_telefono, direccion, correo, hash], (error, resultado) => {
     if (error) {
-      return respuesta.json({ mensaje: "Error en la consulta" });
+      console.error("Error en la consulta:", error.message);
+      return respuesta.status(500).json({ mensaje: "Hubo un error en el servidor. Inténtalo de nuevo más tarde." });
     }
     if (resultado) {
       return respuesta.json({ Estatus: "CORRECTO" });
     }
   });
 });
+
 
 //Acceso
 app.post('/acceso', (peticion, respuesta) => {

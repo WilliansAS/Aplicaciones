@@ -19,7 +19,7 @@
       background: url("https://images.pexels.com/photos/5085334/pexels-photo-5085334.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") 50% no-repeat;
       background-size: cover;
       height: 75vh;
-      width: 94%;
+      width: 80%;
       text-align: center;
       display: -webkit-flex;
       display: -ms-flexbox;
@@ -38,7 +38,7 @@
     }
     
   #parrafo{
-    margin: 15px 50px;
+    margin: 15px 142px;
     text-align: justify;
     font-size: 20px;
     font-weight: 400;
@@ -52,14 +52,14 @@
   
    body h3{
     text-align: center;
-    margin: 0 30px;
+    margin: 0 100px 60px;
    }
   
     
     /*Las categorias*/
     .categorias {
       text-align: center;
-      margin: 0 15px;
+      margin: 0 100px;
       padding: 30px 50px;
       display: grid;
       grid-gap: 8px;

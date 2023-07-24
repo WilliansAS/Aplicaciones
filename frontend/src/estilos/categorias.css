@@ -53,5 +53,9 @@ a:hover{
     #parf{
       font-size: 20px;
       text-align: justify;
-      margin: 15px 70px;
+      padding: 0 50px;
+    }
+
+    #titl{
+      margin: 4px 60px;
     }
