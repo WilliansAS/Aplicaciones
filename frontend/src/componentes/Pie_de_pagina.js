@@ -5,8 +5,7 @@ function Pie_de_pagina() {
     return (
 <>
 <div className="footer">
-  <h5>Alvarado Salazar Anthony Willians | SM-33</h5>
-  <h5>Garcia Canul Guillermo De Jesus | SM-33</h5>
+  <h5>Todos Los Derechos Reservados | SM-33 | © Marings 2023</h5>
   <img src={require("../imagenes/call.png")} />
   <img src={require("../imagenes/correo.png")} />
   <img src={require("../imagenes/whatt.png")} />

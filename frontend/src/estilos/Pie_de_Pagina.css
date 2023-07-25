@@ -1,11 +1,11 @@
 
 .footer{
     margin-top: 20px;
-    background: #fcf75e;
-    padding: 25px 15px;
+    background: rgba(236, 138, 197, 0.83);
+    padding: 15px 15px;
     position: relative;
-    text-align: right;
-    height: 95px;
+    text-align: center;
+    height: 100px;
   }
 
 .footer img{
@@ -18,7 +18,7 @@
   .footer h5{
     font-weight: bold;
     clear: both;
-    float: left;
+     font-size: 15px;
   }
 
   

@@ -26,10 +26,11 @@ useEffect(() => {
       <Encabezado />
       <Deslizable />
       <Texto />
-      <h1 className="Exclamar">¡Nuestros Anillos!</h1>
+      <h1 className="Exclamar">¡Nuestros Productos!</h1>
       <Carrito />
       <ContenedorP />
       <Pie_de_pagina />
+
 
     </>
   );

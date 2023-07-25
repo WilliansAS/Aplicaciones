@@ -53,7 +53,7 @@ function Encabezado() {
           </li>
           {login ? (
             <li>
-              <a onClick={salir}>Salir</a>
+              <Link to="/" onClick={salir}>Salir</Link>
             </li>
           ) : (
             <li>
@@ -69,7 +69,7 @@ function Encabezado() {
           </li>
           ) : (
             <li>
-              <Link to="/acceso">Carrito</Link>
+              <Link to="/carr">Carrito</Link>
             </li>
           )}
         </ul>

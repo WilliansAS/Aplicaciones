@@ -269,7 +269,7 @@ const toggleMenu = () => {
           
           {login ? (
             <li>
-              <Link onClick={salir}>Salir</Link>
+              <Link to="/" onClick={salir}>Salir</Link>
             </li>
           ) : (
             <li>

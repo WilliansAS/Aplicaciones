@@ -45,6 +45,7 @@ const registrar = (e) => {
                         name="nombre_usuario"
                         onChange={e => setCampos({ ...campos, nombre: e.target.value })}
                         className="form-control rounded-21"
+                        required
                     />
                 </div>
 
@@ -55,6 +56,7 @@ const registrar = (e) => {
                         name="correo_electronico"
                         onChange={e => setCampos({ ...campos, correous: e.target.value })}
                         className="form-control rounded-21"
+                        required
                     />
                 </div>
 
@@ -64,6 +66,7 @@ const registrar = (e) => {
                         name="mensaje"
                         onChange={e => setCampos({ ...campos, mensaje: e.target.value })}
                         className="form-control rounded-21"
+                        required
                    >
                 </textarea>
                 

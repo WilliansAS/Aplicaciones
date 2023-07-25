@@ -62,7 +62,6 @@ function Usuarios({ onEliminacionExitoso }){
         {usuarios.map((elusuario, index) => {
         return<>
   <div className="contus">
-    <div className="textous">ID: {elusuario.id_usuario}</div>
     <div className="textous">Usuario: {elusuario.nombre_usuario}</div>
     <div className="textous">Numero Telefono: {elusuario.numero_telefono}</div>
     <div className="textous">Direccion: {elusuario.direccion}</div>

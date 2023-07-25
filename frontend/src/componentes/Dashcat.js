@@ -65,8 +65,6 @@ const eliminarCategoria = (id) => {
     
     <div className="inner-container2" key={lacategoria.id_categoria}>
       <img className="image2" src={require("../imagenes/"+lacategoria.imagen)} alt="Imagen 1" />
-      <h5>{lacategoria.imagen}</h5>
-      <h5>{lacategoria.id_categoria}</h5>
       <h3>{lacategoria.nombre_categoria}</h3>
      <div> <p>
       {lacategoria.descripcion_categoria}
