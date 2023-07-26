@@ -1,46 +1,67 @@
-/* estilos/Carrito.css */
-
 /* Estilos para la tabla del carrito */
 .cart {
-    margin-top: 20px;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilos para el encabezado de la tabla */
-  .cart table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .cart th {
-    background-color: #f08080;
-    color: #ffffff;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  .cart th, .cart td {
-    padding: 10px;
-    border-bottom: 1px solid #dddddd;
-  }
-  
-  /* Estilos para resaltar el botón de eliminar */
-  .cart button {
-    background-color: #f08080;
-    color: #ffffff;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .cart button:hover {
-    background-color: #ff2d55;
-  }
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  .btn{
-    margin-top: 12px;
-  }
+/* Estilos para el encabezado de la tabla */
+.cart table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart th {
+  background-color: #f08080;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+}
+
+.cart th,
+.cart td {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+/* Estilos para resaltar el botón de eliminar */
+.cart button {
+  background-color: #f08080;
+  color: #ffffff;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cart button:hover {
+  background-color: #ff2d55;
+}
+
+/* Estilos para los botones de PayPal y Seguir comprando */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.paypal-button,
+.seguir-comprando-button {
+  padding: 50px 100px; /* Tamaño más grande */
+  font-size: 15px; /* Tamaño de la fuente más grande */
+  background-color: #0070ba;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.paypal-button:hover,
+.seguir-comprando-button:hover {
+  background-color: #005689;
+}

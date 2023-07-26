@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from "react";
 import axios from 'axios';
 import Encabezado from "../componentes/Encabezado";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,33 +13,21 @@ function Acceso() {
 
     const [error, setError] = useState();
     const navegacion = useNavigate();
-    const[usuarios, setUsuario] = useState([]);
-
-    useEffect(()=> {
-        axios.get('http://localhost:8082/obtenerUsuarios')
-        .then(respuesta => {
-            if(respuesta.data.Estatus==='Exitoso'){
-                setUsuario(respuesta.data.Resultado);
-                
-            }else{
-              console.log("Error")
-            }
-        })
-        .catch(error=>console.log(error));
-    },[]); 
 
     const acceder = (e) => {
         e.preventDefault();
     
-        axios
-        .post('http://localhost:8082/acceso', campos)
+        axios.post('http://localhost:8082/acceso', campos)
             .then(respuesta => {
                 if (respuesta.data.Estatus === "CORRECTO") {
-                    const usuario = respuesta.data;
+                    const { Usuario, Nivelusuario } = respuesta.data;
 
-                    localStorage.setItem('usuario', JSON.stringify(usuario));
+                    // Almacenar el token y nivel del usuario en localStorage
+                    localStorage.setItem('usuario', Usuario);
+                    localStorage.setItem('Nivelsuario', Nivelusuario);
+
                     // Redirigir al usuario dependiendo del nivel
-                    if (usuario.nivel === 1) {
+                    if (Nivelusuario === '1') {
                         navegacion('/panel');
                     } else {
                         navegacion('/');

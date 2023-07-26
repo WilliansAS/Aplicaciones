@@ -63,7 +63,8 @@ app.post('/acceso', (peticion, respuesta) => {
     if (error) return respuesta.json({ mensaje: 'Error en la consulta' });
 
     if (resultado.length > 0) {
-      const contraseniaAlmacenada = resultado[0].contrasenia;
+      const usuario = resultado[0];
+      const contraseniaAlmacenada = usuario.contrasenia;
 
       // Comparar la contraseña ingresada con la contraseña almacenada utilizando bcrypt
       bcrypt.compare(contrasenia, contraseniaAlmacenada, (error, coinciden) => {
@@ -72,7 +73,9 @@ app.post('/acceso', (peticion, respuesta) => {
         if (coinciden) {
           const token = Jwt.sign({ usuario: 'administrador' }, '12345678', { expiresIn: '1d' });
           respuesta.cookie(token);
-          return respuesta.json({ Estatus: 'CORRECTO', Usuario: token });
+
+          // Devolver el nivel del usuario junto con el token en la respuesta
+          return respuesta.json({ Estatus: 'CORRECTO', Usuario: token, Nivelusuario: usuario.nivel });
         } else {
           return respuesta.json({ Estatus: 'ERROR', Error: 'Usuario o contraseña incorrecta' });
         }
@@ -82,6 +85,7 @@ app.post('/acceso', (peticion, respuesta) => {
     }
   });
 });
+
 
 // 6. obtener la lista de productos
 app.get('/obtenerProductos',(peticion, respuesta)=>{

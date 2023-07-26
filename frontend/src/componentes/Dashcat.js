@@ -65,8 +65,8 @@ const eliminarCategoria = (id) => {
     
     <div className="inner-container2" key={lacategoria.id_categoria}>
       <img className="image2" src={require("../imagenes/"+lacategoria.imagen)} alt="Imagen 1" />
-      <h3>{lacategoria.nombre_categoria}</h3>
-     <div> <p>
+      <h3 id="titu">{lacategoria.nombre_categoria}</h3>
+     <div id="tex"> <p>
       {lacategoria.descripcion_categoria}
       </p></div>
     <button className="btn btn-danger" onClick={() => eliminarCategoria(lacategoria.id_categoria)}>Eliminar</button>

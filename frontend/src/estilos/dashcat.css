@@ -40,8 +40,12 @@
         font-style: italic;
       }
   
-      #parf{
-        font-size: 20px;
-        text-align: justify;
-        margin: 15px 70px;
+      #tex{
+        font-size: 15px;
+        margin: 10px;
+      }
+
+      #titu{
+        margin-bottom: 5px;
+        text-align: center;
       }
