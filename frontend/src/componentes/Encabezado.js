@@ -7,10 +7,12 @@ function Encabezado() {
   const login = localStorage.getItem('usuario');
   const navegacion = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { limpiarCarrito } = useCarrito(); // Obtenemos la función para limpiar el carrito del contexto
 
   const salir = () => {
-    localStorage.clear();
-    navegacion('/');
+    localStorage.removeItem('usuario'); // Eliminamos solo la clave 'usuario' del localStorage
+    limpiarCarrito(); // Limpia el carrito al cerrar sesión
+    navegacion('/'); // Redirigimos al usuario a la página de inicio
   };
 
   const toggleMenu = () => {
@@ -63,10 +65,10 @@ function Encabezado() {
           {/* Mostramos la cantidad de productos en el carrito */}
           {login ? (
             <li>
-            <Link to="/carr">
-              Carrito ({totalProductosEnCarrito})
-            </Link>
-          </li>
+              <Link to="/carr">
+                Carrito ({totalProductosEnCarrito})
+              </Link>
+            </li>
           ) : (
             <li>
               <Link to="/carr">Carrito</Link>

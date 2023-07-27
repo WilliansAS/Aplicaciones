@@ -90,7 +90,7 @@ app.post('/acceso', (peticion, respuesta) => {
 // 6. obtener la lista de productos
 app.get('/obtenerProductos',(peticion, respuesta)=>{
     // 6.1 consulta sql
-    const sql="SELECT * FROM productos";
+    const sql="SELECT * FROM productos INNER JOIN categoria ON id_categoria_id = id_categoria";
     // 6.2 lo envio a la conexion
     conexion.query(sql,(error,resultado)=>{
         // 6.3 compruebo el resultado
@@ -116,6 +116,19 @@ app.get('/obtenerCategorias/:id',(peticion, respuesta)=>{
   const id = peticion.params.id;
   // 6.1 consulta sql
   const sql="SELECT * FROM categoria WHERE id_categoria = ?";
+  // 6.2 lo envio a la conexion
+  conexion.query(sql,[id],(error,resultado)=>{
+      // 6.3 compruebo el resultado
+      if(error) return respuesta.json({Error:"Error en la consulta"});
+      return respuesta.json({Estatus:"Exitoso",Resultado:resultado});
+  });
+});
+
+// 6. Ruta para obtener todas los usuarios por id
+app.get('/obtenerUsuario/:id',(peticion, respuesta)=>{
+  const id = peticion.params.id;
+  // 6.1 consulta sql
+  const sql="SELECT * FROM usuario WHERE id_usuario = ?";
   // 6.2 lo envio a la conexion
   conexion.query(sql,[id],(error,resultado)=>{
       // 6.3 compruebo el resultado
@@ -272,6 +285,7 @@ app.delete('/eliminarUsuario/:id', (peticion, respuesta) => {
   });
 });
 
+
 // Ruta para eliminar una categoria
 app.delete('/eliminarCategoria/:id', (peticion, respuesta) => {
   const id = peticion.params.id;
@@ -306,6 +320,85 @@ app.put('/actualizarCategoria/:id', subirFoto.single("imagen"), (peticion, respu
   });
 });
 
+// Ruta para actualizar una categoria
+app.put('/actualizarUsuario/:id',(peticion, respuesta) => {
+  const id = peticion.params.id;
+  const { nombre_usuario, numero_telefono, direccion, correo } = peticion.body;
+  const sql = 'UPDATE usuario SET nombre_usuario = ?, numero_telefono = ?, direccion = ?, correo = ? WHERE id_usuario = ?';
+  conexion.query(sql, [nombre_usuario, numero_telefono, direccion, correo, id], (error, resultado) => {
+    if (error) return respuesta.json({ mensaje: 'Error al actualizar usuario' });
+    return respuesta.json({ Estatus: 'CORRECTO', Mensaje: 'Usuario actualizado correctamente' });
+  });
+});
+
+// Agregar esta ruta para recibir los datos del pedido y realizar la inserción
+app.post("/crear-pedido", (peticion, respuesta) => {
+  const sql =
+    "INSERT INTO pedidos (id_usuario, fecha, detalles, total) VALUES (?, NOW(), ?, ?)";
+  conexion.query(
+    sql,
+    [peticion.body.id_usuario, peticion.body.fecha, peticion.body.detalles, peticion.body.total],
+    (error, resultado) => {
+      if (error) {
+        return respuesta.json({
+          Estatus: "Error",
+          Error: "Error al crear el pedido",
+        });
+      } else {
+        return respuesta.json({ Estatus: "CORRECTO" });
+      }
+    }
+  );
+});
+
+// Ruta para obtener la lista de pedidos con el nombre del usuario
+app.get("/pedidos", (peticion, respuesta) => {
+  const sql = `
+  SELECT pedidos.id_pedido, usuario.nombre_usuario AS nombre_usuario, pedidos.fecha, pedidos.detalles, pedidos.total FROM pedidos INNER JOIN usuario ON pedidos.id_usuario_id = usuario.id_usuario;
+  `;
+  conexion.query(sql, (error, resultados) => {
+    if (error) {
+      return respuesta.status(500).json({ mensaje: "Error en la consulta" });
+    }
+    return respuesta.json(resultados);
+  });
+});
+
+// Ruta para crear un nuevo pedido
+app.post("/crear-pedido", (peticion, respuesta) => {
+  // Obtener los datos del pedido desde el cuerpo de la solicitud
+  const { id_usuario, detalles, total } = peticion.body;
+
+  // Realizar la inserción del nuevo pedido en la base de datos
+  const sql =
+    "INSERT INTO pedidos (id_usuario, fecha, detalles, total) VALUES (?, NOW(), ?, ?)";
+  conexion.query(sql, [id_usuario, detalles, total], (error, resultado) => {
+    if (error) {
+      return respuesta.json({
+        Estatus: "Error",
+        Error: "Error al crear el pedido",
+      });
+    } else {
+      return respuesta.json({ Estatus: "CORRECTO" });
+    }
+  });
+});
+
+// Ruta para eliminar un pedido por su ID
+app.delete("/pedidos/:id", (peticion, respuesta) => {
+  const idPedido = peticion.params.id;
+  const sql = "DELETE FROM pedidos WHERE id_pedido = ?";
+  conexion.query(sql, [idPedido], (error, resultado) => {
+    if (error) {
+      return respuesta.json({
+        Estatus: "Error",
+        Error: "Error al eliminar el pedido",
+      });
+    } else {
+      return respuesta.json({ Estatus: "CORRECTO" });
+    }
+  });
+});
 
 //INICIAR SERVIDOR
 app.listen(8082,() =>{

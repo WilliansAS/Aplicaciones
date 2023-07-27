@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../estilos/usuarios.css";
 
 function Usuarios({ onEliminacionExitoso }){
@@ -66,9 +66,11 @@ function Usuarios({ onEliminacionExitoso }){
     <div className="textous">Numero Telefono: {elusuario.numero_telefono}</div>
     <div className="textous">Direccion: {elusuario.direccion}</div>
     <div className="textous">Correo Electronico: {elusuario.correo}</div>
-    {/*<div className="textous">Contraseña: {elusuario.contrasenia}</div>*/}
     <div className="botoneus">
-    <button type="button" class="btonus" onClick={() => eliminarUsuario(elusuario.id_usuario)}>Eliminar</button>
+    <button type="button" className="btonus" onClick={() => eliminarUsuario(elusuario.id_usuario)}>Eliminar</button>
+    <Link to={`/edituser/${elusuario.id_usuario}`}> {/* Redirecciona al usuario a la página de edición */}
+                  <button className="btonus">Editar</button>
+    </Link>
       
     </div>
   </div>

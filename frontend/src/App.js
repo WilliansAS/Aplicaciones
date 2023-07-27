@@ -23,6 +23,7 @@ import Carrito from './componentes/Carrito';
 import ProductoEdit from './componentes/ProductoEdit';
 import CategoriaEdit from './componentes/CategoriaEdit';
 import CarritoEnc from './paginas/CarritoEnc';
+import UsersEdit from './componentes/UsersEdit';
 
 
 function App() {
@@ -69,7 +70,7 @@ function App() {
           <Route path='/dashcat' element={<Dashcat/>}></Route>
           <Route path='/editprod/:id' element={<ProductoEdit/>}></Route>
           <Route path='/editcat/:id' element={<CategoriaEdit/>}></Route>
-        
+          <Route path='/edituser/:id' element={<UsersEdit/>}></Route>
           
       
         </Routes>

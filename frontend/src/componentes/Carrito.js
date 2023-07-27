@@ -5,22 +5,49 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function Carrito() {
   const { carrito, eliminarProducto } = useCarrito();
   const login = localStorage.getItem('usuario');
   const navigate = useNavigate();
+  
+  const crearPedido = () => {
+  const usuarioId = localStorage.getItem("usuarioId"); // Obtener el ID del usuario del almacenamiento local
+  const detallesPedido = carrito.map((producto) => `${producto.nombre_producto} x ${producto.cantidad}`)
+  .join(", "); // Obtener los detalles del pedido concatenando los nombres de los productos y las cantidades
+
+     // Objeto con los datos del pedido
+     const pedidoData = {
+      id_usuario_id: usuarioId,
+      detalles: detallesPedido,
+      total: redondearTotal,
+    };
+
+    // Enviar el pedido al servidor
+    axios
+      .post("http://localhost:8082/crear-pedido", pedidoData)
+      .then((respuesta) => {
+        if (respuesta.data.Estatus === "CORRECTO") {
+          // Aquí puedes redirigir al usuario a una página de confirmación o hacer cualquier otra acción necesaria
+          console.log("Pedido creado exitosamente");
+        } else {
+          console.log("Error al crear el pedido");
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   if (!login) {
     // Si el usuario no está logeado, mostrar un mensaje o un contenido diferente
     return (
-      <section>
+      <section className="compra">
         <h2>Carrito de compras</h2>
         <p>Para ver el contenido del carrito, por favor inicia sesión o regístrate.</p>
-        <Link to="/acceso" className="btn btn-primary">
+        <Link to="/acceso" className="btn-primary">
           Iniciar sesión
         </Link>
-        <Link to="/registro" className="btn btn-secondary">
+        <Link to="/registro" className="btn-info">
           Registrarse
         </Link>
       </section>
@@ -122,25 +149,28 @@ function Carrito() {
           </tfoot>
         </table>
         <div className="buttons-container">
-          <PayPalScriptProvider options={{ "client-id": "AbcsaMQYqfMsORH4nNv8qVBPeCZWULhqmWTxzWJH7y2sboHlRlZBWzZh9svp1b3qnuBmIR3-NqhkfJeB" }}>
-            <PayPalButtons 
-              createOrder={(data, actions) =>{
-                return actions.order.create({
-                  purchase_units: [
-                    {
-                      amount: {
-                        value: redondearTotal(carrito.reduce(
-                          (total, producto) =>
-                            total + producto.precio_unitario * producto.cantidad,
-                          0
-                        ))
+          {carrito.length > 0 && (
+            <PayPalScriptProvider options={{ "client-id": "AbcsaMQYqfMsORH4nNv8qVBPeCZWULhqmWTxzWJH7y2sboHlRlZBWzZh9svp1b3qnuBmIR3-NqhkfJeB" }}>
+              <PayPalButtons 
+                createOrder={(data, actions) =>{
+                  return actions.order.create({
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: redondearTotal(carrito.reduce(
+                            (total, producto) =>
+                              total + producto.precio_unitario * producto.cantidad,
+                            0
+                          ))
+                        },
                       },
-                    },
-                  ],
-                });
-              }}                  
-            />
-          </PayPalScriptProvider>
+                    ],
+                  });
+                }}                 
+                onClick={crearPedido} // Llama a la función crearPedido al hacer clic en el botón de PayPal 
+              />
+            </PayPalScriptProvider>
+          )}
           <button onClick={handleSeguirComprando} className="seguir-comprando-button">
             Seguir comprando
           </button>

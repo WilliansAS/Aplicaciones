@@ -22,6 +22,7 @@ function Dashregistro({ onRegistroExitoso }) {
                 if (respuesta.data.Estatus === "CORRECTO") {
                     navegacion('/panel');
                     alert('¡Se agregó un nuevo usuario!');
+                    // Restablecer los campos del formulario a su estado inicial
                     setCampos({
                         nombre_usuario: "",
                         numero_telefono: "",
@@ -55,6 +56,7 @@ function Dashregistro({ onRegistroExitoso }) {
                         type="text"
                         placeholder="Nombre de Usuario"
                         name="nombre_usuario"
+                        value={campos.nombre_usuario}
                         onChange={e => setCampos({ ...campos, nombre_usuario: e.target.value })}
                         className="form-control rounded-21"
                         required // Campo requerido
@@ -66,6 +68,7 @@ function Dashregistro({ onRegistroExitoso }) {
                         type="text"
                         placeholder="Numero de telefono"
                         name="numero_telefono"
+                        value={campos.numero_telefono}
                         onChange={e => setCampos({ ...campos, numero_telefono: e.target.value })}
                         className="form-control rounded-21"
                         required // Campo requerido
@@ -77,6 +80,7 @@ function Dashregistro({ onRegistroExitoso }) {
                         type="text"
                         placeholder="Direccion"
                         name="direccion"
+                        value={campos.direccion}
                         onChange={e => setCampos({ ...campos, direccion: e.target.value })}
                         className="form-control rounded-21"
                         required // Campo requerido
@@ -88,6 +92,7 @@ function Dashregistro({ onRegistroExitoso }) {
                         type="email"
                         placeholder="Correo Electrónico"
                         name="correo_electronico"
+                        value={campos.correo}
                         onChange={e => setCampos({ ...campos, correo: e.target.value })}
                         className="form-control rounded-21"
                         required // Campo requerido
@@ -98,6 +103,7 @@ function Dashregistro({ onRegistroExitoso }) {
                         type="password"
                         placeholder="Contraseña"
                         name="contrasenia"
+                        value={campos.contrasenia}
                         onChange={e => setCampos({ ...campos, contrasenia: e.target.value })}
                         className="form-control rounded-21"
                         required // Campo requerido

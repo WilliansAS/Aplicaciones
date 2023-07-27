@@ -26,8 +26,7 @@ function Tabla1(){
       <th scope="col">Nombre Producto</th>
       <th scope="col">Precio Unitario</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">Imagen</th>
-      <th scope="col">Categoria</th>
+      <th scope="col">Categoría</th>
     </tr>
   </thead>
         {productos.map((elproducto, index) =>{
@@ -39,8 +38,7 @@ function Tabla1(){
       <td>{elproducto.nombre_producto}</td>
       <td>{elproducto.precio_unitario}</td>
       <td>{elproducto.descripcion_producto}</td>
-      <td>{elproducto.imagen}</td>
-      <td>{elproducto.id_categoria_id}/</td>
+      <td>{elproducto.nombre_categoria}</td>
     </tr>
   </tbody>
 

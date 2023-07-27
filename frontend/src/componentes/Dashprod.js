@@ -66,7 +66,7 @@ const eliminarProducto = (id) => {
         <div className="column2" key={elproducto.id_producto}>
           <div className="product-container2">
             <img className="product-image2" src={require("../imagenes/"+elproducto.imagen)} alt="Producto 1" />
-            <p>ID Categoria: {elproducto.id_categoria_id}</p>
+            <p>Categoría: {elproducto.nombre_categoria}</p>
             <h4>{elproducto.nombre_producto}</h4>
             <div className='texto3'>
             <p>{elproducto.descripcion_producto}</p>

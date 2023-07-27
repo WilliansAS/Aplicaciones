@@ -4,19 +4,17 @@ import { useNavigate } from "react-router-dom";
 import '../estilos/registro.css';
 
 function Formulario2({ onRegistroExitoso }) {
+  const [campos, setCampos] = useState({
+    nombre_producto: "",
+    precio_unitario: "",
+    descripcion_producto: "",
+    imagen: "",
+    id_categoria_id: ""
+  });
 
-    const [campos, setCampos] = useState({
-        nombre_producto: "",
-        precio_unitario: "",
-        descripcion_producto: "",
-        imagen: "",
-        id_categoria_id: ""
-    });
+  const [error, setError] = useState();
+  const navegacion = useNavigate();
 
-    const [error, setError] = useState();
-    const navegacion = useNavigate();
-
-    
   const registrar = (e) => {
     e.preventDefault();
 
@@ -35,18 +33,24 @@ function Formulario2({ onRegistroExitoso }) {
     formData.append("imagen", campos.imagen);
     formData.append("id_categoria_id", campos.id_categoria_id);
 
+      // Función para restablecer los campos del formulario a su estado inicial
+  const resetearCampos = () => {
+    setCampos({
+      nombre_producto: "",
+      precio_unitario: "",
+      descripcion_producto: "",
+      imagen: "",
+      id_categoria_id: ""
+    });
+  };
+
     axios.post('http://localhost:8082/registrarprod', formData)
       .then(respuesta => {
         if (respuesta.data.Estatus === "CORRECTO") {
           navegacion('/panel');
           alert('¡Se agregó un nuevo producto!');
-          setCampos({
-            nombre_producto: "",
-            precio_unitario: "",
-            descripcion_producto: "",
-            imagen: "",
-            id_categoria_id: ""
-          });
+          // Aquí restablecemos los campos del formulario después del registro exitoso
+          resetearCampos();
           // Aquí llamamos a la función para actualizar el conteo de usuarios
           axios.get('http://localhost:8082/numProductos')
             .then(respuesta => {
@@ -64,95 +68,95 @@ function Formulario2({ onRegistroExitoso }) {
       .catch(error => console.log(error));
   }
 
-    //Obtener las categorias
-    const[categorias, setCategoria] = useState([]);
-  useEffect(()=> {
-      axios.get('http://localhost:8082/obtenerCategorias')
+  // Obtener las categorias
+  const [categorias, setCategoria] = useState([]);
+  useEffect(() => {
+    axios.get('http://localhost:8082/obtenerCategorias')
       .then(respuesta => {
-          if(respuesta.data.Estatus==='Exitoso'){
-              setCategoria(respuesta.data.Resultado);
-              
-          }else{
-            console.log("Error")
-          }
+        if (respuesta.data.Estatus === 'Exitoso') {
+          setCategoria(respuesta.data.Resultado);
+        } else {
+          console.log("Error")
+        }
       })
-      .catch(error=>console.log(error));
-  },[]); 
+      .catch(error => console.log(error));
+  }, []);
 
-    return (
-        <>
+  return (
+    <>
+      <form onSubmit={registrar} className="registro">
+        <h1 className="py-4">Registrar Productos</h1>
+        <div className="mb-3">
+          <input
+            type="text"
+            placeholder="Nombre del producto"
+            name="nombre_producto"
+            value={campos.nombre_producto}
+            onChange={e => setCampos({ ...campos, nombre_producto: e.target.value })}
+            className="form-control rounded-21"
+          />
+        </div>
 
-            <form onSubmit={registrar} className="registro">
-                <h1 className="py-4">Registrar Productos</h1>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        placeholder="Nombre del producto"
-                        name="nombre_producto"
-                        onChange={e => setCampos({ ...campos, nombre_producto: e.target.value })}
-                        className="form-control rounded-21"
-                    />
-                </div>
+        <div className="mb-3">
+  <input
+    type="text"
+    placeholder="Precio del producto"
+    name="precio_unitario"
+    value={campos.precio_unitario}
+    onChange={e => setCampos({ ...campos, precio_unitario: e.target.value })}
+    className="form-control rounded-21"
+  />
+</div>
 
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        placeholder="Precio del producto"
-                        name="precio_unitario"
-                        onChange={e => setCampos({ ...campos, precio_unitario: e.target.value })}
-                        className="form-control rounded-21"
-                    />
-                </div>
+<div className="mb-3">
+  <textarea
+    type="text"
+    placeholder="Descripcion del producto"
+    name="descripcion_producto"
+    value={campos.descripcion_producto}
+    onChange={e => setCampos({ ...campos, descripcion_producto: e.target.value })}
+    className="form-control rounded-21"
+  />
+</div>
 
-                
-                <div className="mb-3">
-                    <textarea
-                        type="text"
-                        placeholder="Descripcion del producto"
-                        name="descripcion_producto"
-                        onChange={e => setCampos({ ...campos, descripcion_producto: e.target.value })}
-                        className="form-control rounded-21"
-                    />
-                </div>
+<div className="mb-3">
+  <input
+    type="file"
+    placeholder="Agrega una imagen"
+    name="imagen"
+    accept="image/*"
+    className="form-control rounded-21"
+    required
+    onChange={(e) => setCampos({ ...campos, imagen: e.target.files[0] })}
+  />
+</div>
 
-                <div className="mb-3">
-                    <input
-                        type="file"
-                        placeholder="Agrega una imagen"
-                        name="imagen"
-                        accept="image/*"
-                        className="form-control rounded-21"
-                        required
-                onChange={(e) =>
-                  setCampos({ ...campos, imagen: e.target.files[0] })
-                }
-                    />
-                    
-                </div>
+<div className="mb-3">             
+  <select 
+    name="id_categoria_id"
+    value={campos.id_categoria_id}
+    onChange={e => setCampos({ ...campos, id_categoria_id: e.target.value })}
+    className="form-control rounded-21"
+  >
+    <option value="">Seleccione una categoria</option>
+    {categorias.map((lacategoria, index) => {
+      return (
+        <option value={lacategoria.id_categoria} key={index}>
+          {lacategoria.nombre_categoria}
+        </option>
+      );
+    })}
+  </select>
+</div>
 
-                <div className="mb-3">             
-                    <select 
-                        name="id_categoria_id"
-                        onChange={e => setCampos({ ...campos, id_categoria_id: e.target.value })}
-                        className="form-control rounded-21"
-                       
-                    >
-                       <option value="">Seleccione una categoria</option>
-                       {categorias.map((lacategoria, index) =>{
-                return<>
-                                    <option value={lacategoria.id_categoria}>{lacategoria.nombre_categoria}</option>
-                                    </>
-                                    })}
-                      </select>
-                      
-                </div>
-                
-                <button type="submit">
-                    Agregar
-                </button>
-            </form>
-        </>
-    );
+
+        <button type="submit">
+          Agregar
+        </button>
+      </form>
+    </>
+  );
 }
 
 export default Formulario2;
+

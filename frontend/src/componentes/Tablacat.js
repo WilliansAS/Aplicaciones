@@ -26,7 +26,6 @@ function Tabla3(){
       <th scope="col">#</th>
       <th scope="col">Nombre Categoria</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">Imagen</th>
     </tr>
   </thead>
         {categorias.map((lacategoria, index) =>{
@@ -37,7 +36,6 @@ function Tabla3(){
       <th scope="row">{lacategoria.id_categoria}</th>
       <td>{lacategoria.nombre_categoria}</td>
       <td>{lacategoria.descripcion_categoria}</td>
-      <td>{lacategoria.imagen}</td>
     </tr>
   </tbody>
 

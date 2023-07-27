@@ -292,7 +292,7 @@ const toggleMenu = () => {
     <p className="texto2">Usuarios registrados:</p>
     <h3>{usuarios.Usuarios}</h3>
     <Link to="" onClick={handleMostrarFormUs}><button className="boton">Agregar</button></Link>
-    <Link to="" onClick={handleMostrarContUS}><button className="boton">Eliminar</button></Link>
+    <Link to="" onClick={handleMostrarContUS}><button className="boton">Gestionar</button></Link>
   </div>
   </>
    })}
@@ -328,7 +328,7 @@ const toggleMenu = () => {
     <h2 className="titulo">Pedidos</h2>
     <p className="texto2">Pedidos registrados:</p>
     <h3>{totalProductosEnCarrito}</h3>
-    <Link to="" onClick={handleMostrarCarrito}><button className="boton">Eliminar</button></Link>
+    <Link to="" onClick={handleMostrarCarrito}><button className="boton">Gestionar</button></Link>
   </div>
 </div>
 

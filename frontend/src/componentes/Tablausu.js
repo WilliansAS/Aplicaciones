@@ -26,7 +26,6 @@ function Tabla2(){
       <th scope="col">Numero</th>
       <th scope="col">Direccion</th>
       <th scope="col">Correo</th>
-      <th scope="col">Contraseña</th>
     </tr>
   </thead>
         {usuarios.map((elusuario, index) =>{
@@ -39,7 +38,6 @@ function Tabla2(){
       <td>{elusuario.numero_telefono}</td>
       <td>{elusuario.direccion}</td>
       <td>{elusuario.correo}</td>
-      <td>{elusuario.contrasenia}</td>
     </tr>
   </tbody>
 

@@ -65,3 +65,28 @@
 .seguir-comprando-button:hover {
   background-color: #005689;
 }
+
+.compra{
+  padding: 40px 300px;
+}
+
+.compra a{
+  padding: 10px 100px; /* Tamaño más grande */
+  font-size: 15px; /* Tamaño de la fuente más grande */
+  background-color: #0070ba;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.compra a:hover{
+  text-decoration: none;
+  color: #e6ddea;
+}
+
+.compra p{
+  margin-bottom: 30px;
+}
